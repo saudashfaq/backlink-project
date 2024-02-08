@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('order_id')->nullable()->constrained('orders');
-            $table->decimal('amount', 10, 2);
+            $table->decimal('amount', 5, 2);
             $table->enum('transaction_type', ['Credit', 'Debit']);//get enum from the class
+            $table->enum('event_type', ['Withdraw Request', 'Topup Account', 'Purchased Guestpost', 'Sold Guestpost']); //get enum from the class
             
             // Index on frequently used columns
             $table->index('user_id');

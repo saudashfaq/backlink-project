@@ -21,7 +21,6 @@ return new class extends Migration
             $table->tinyInteger('spam_score')->nullable()->default(1);
             $table->date('domain_age')->nullable();
             $table->string('preview_image')->nullable()->comment('This will store the screenshot of the website');
-
             $table->date('last_crawled_at')->nullable();
 
             $table->timestamps();

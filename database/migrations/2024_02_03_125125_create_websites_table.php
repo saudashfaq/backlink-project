@@ -16,15 +16,17 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('url');
-            $table->text('other_info')->nullable();
-                        $table->tinyInteger('status')->default(1);
-            
+            $table->text('details')->nullable()->comment('Details about this website, and why it should be considered for the link posting. Will be displayed to the Buyers');
+            $table->enum('website_status', ['In Review', 'Rejected', 'Approved'])->default('In Review')->comment('this status is used for pending review, approved, etc');
+            $table->boolean('is_visible')->default(true);
             $table->timestamps();
             $table->softDeletes();
 
             // Index on frequently used columns
             $table->index('url');
             $table->index('user_id');
+            $table->index('website_status');
+            $table->index('is_visible');
 
 
         });

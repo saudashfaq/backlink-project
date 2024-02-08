@@ -16,13 +16,21 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained(); // Assuming you have a 'users' table
             $table->foreignId('website_id')->constrained(); // Assuming you have a 'websites' table
-            $table->integer('words_count')->default(350)->comment('the post on which link will be placed will consist of minimum this number of words'); // Add your guest word count
+            $table->integer('words_count', 6)->default(350)->comment('the post on which link will be placed will consist of minimum this number of words'); // Add your guest word count
             //$table->boolean('content_writing_included')->default(false);
-            $table->decimal('rate', 10, 2); // Adjust precision and scale as needed;
-            $table->integer('max_number_of_links')->default(3)->comment('The buyer can provide this number of links to be posted on the post');
-
+            $table->decimal('price', 5, 2);
+            $table->tinyInteger('max_number_of_links', 2)->default(3)->comment('The buyer can provide this number of links to be posted on the post');
+            $table->boolean('is_visible')->default(true);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index('user_id');
+            $table->index('website_id');
+            $table->index('words_count');
+            $table->index('price');
+            $table->index('max_number_of_links');
+            $table->index('is_visible');
+            
         });
     }
 

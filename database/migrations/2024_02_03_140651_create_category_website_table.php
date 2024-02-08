@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('website_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_visible')->default(true);
             $table->timestamps();
+
+            $table->index('category_id');
+            $table->index('website_id');
+            $table->index('is_visible');
         });
     }
 
