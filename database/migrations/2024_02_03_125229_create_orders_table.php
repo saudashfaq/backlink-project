@@ -18,8 +18,7 @@ return new class extends Migration
             $table->foreignId('buyer_id')->constrained('users');
             $table->foreignId('seller_id')->constrained('users');
             $table->foreignId('website_id')->constrained('websites');
-            $table->boolean('content_required');
-            $table->enum('backlink_type', BacklinkTypeEnum::getList())->default(BacklinkTypeEnum::BACKLINK);
+            $table->foreignId('website_backlink_rate_id');
             $table->decimal('order_amount', 10, 2);
             $table->text('order_details')->comment('[{"linkurl": "", "keyphrase": ""},{"linkurl": "", "keyphrase": ""}]');
             $table->enum('order_status', OrderStatusEnum::getList())->default(OrderStatusEnum::OPEN);

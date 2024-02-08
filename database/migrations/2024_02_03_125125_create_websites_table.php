@@ -16,9 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('url');
-            $table->boolean('content_available')->default(false);
             $table->text('other_info')->nullable();
-            $table->tinyInteger('status')->default(1);
+                        $table->tinyInteger('status')->default(1);
             
             $table->timestamps();
             $table->softDeletes();
