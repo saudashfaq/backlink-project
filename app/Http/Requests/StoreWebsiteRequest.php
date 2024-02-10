@@ -11,7 +11,7 @@ class StoreWebsiteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; //TODO: make it only available for authorized visitors
     }
 
     /**
@@ -22,13 +22,16 @@ class StoreWebsiteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',
+            //'user_id' => 'nullable',
             'url' => 'required|url',
-            'content_available' => 'required|boolean',
-            'other_info' => 'nullable|string',
-            'status' => 'required|integer',
-            'categories' => 'array', // Assuming you are updating categories
-            'backlink_type' => 'required|string', // Assuming you are updating backlink type
+            'details' => 'nullable|string',
+            'is_visible'=> 'nullable|in:0,1',
+            'website_status' => 'required|in:In Review,Rejected,Approved',
+            'backlink_rates.*.words_count' => 'required|integer|min:100',
+            'backlink_rates.*.price' => 'required|numeric|min:3',
+            'backlink_rates.*.max_number_of_links' => 'required|integer|min:1',
+            'categories' => 'required|array', // Ensure categories is an array
+            'categories.*' => 'exists:categories,id', // Check if each category ID exists in the categories table
         ];
     }
 }

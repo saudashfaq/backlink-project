@@ -16,7 +16,7 @@ class Website extends Model
     protected $table = 'websites';
 
 
-    protected $fillable = ['user_id', 'url', 'content_available', 'status', 'created_by', 'updated_by', 'deleted_by', 'backlink_rate', 'content_available', 'other_info'];
+    protected $fillable = ['user_id', 'url', 'details', 'website_status', 'is_visible', 'created_by', 'updated_by', 'deleted_by',];
 
     // Relationships
     public function user(): BelongsTo 
@@ -29,7 +29,7 @@ class Website extends Model
         return $this->hasMany(Order::class);
     }
     
-    public function guestpostRates(): HasMany
+    public function websiteBacklinkRates(): HasMany
     {
         return $this->hasMany(WebsiteBacklinkRate::class);
     }

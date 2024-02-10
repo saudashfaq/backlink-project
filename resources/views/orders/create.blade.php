@@ -25,5 +25,6 @@
         <!-- Add more form fields as needed -->
 
         <button type="submit" class="btn btn-primary">Create</button>
+        <a href="{{ route('orders.index') }}"  class="btn btn-danger">Cancel</a>
     </form>
 @endsection

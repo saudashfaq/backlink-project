@@ -10,7 +10,9 @@ class WebsiteBacklinkRate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'website_id', 'guestpost_type', 'rate'];
+    protected $table = 'websitebacklinkrates';
+
+    protected $fillable = ['user_id', 'website_id', 'words_count', 'price', 'max_number_of_links', 'is_visible'];
 
     // User relationship
     public function user(): BelongsTo
