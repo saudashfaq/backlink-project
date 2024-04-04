@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WebsiteController;
+use App\Models\WebsiteBacklinkRate;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication routes
+//Auth::routes();
+
+
 Route::group(['prefix' => 'websites'], function () {
+    //BASIC ROUTES
     Route::get('/', [WebsiteController::class, 'index'])->name('websites.index');
     Route::get('/{id}/show', [WebsiteController::class, 'show'])->name('websites.show');
     Route::get('/create', [WebsiteController::class, 'create'])->name('websites.create');
@@ -27,14 +33,31 @@ Route::group(['prefix' => 'websites'], function () {
     Route::get('/{id}/edit', [WebsiteController::class, 'edit'])->name('websites.edit');
     Route::put('/{id}/update', [WebsiteController::class, 'update'])->name('websites.update');
     Route::delete('/{id}/destroy', [WebsiteController::class, 'destroy'])->name('websites.destroy');
+
+    //UserWise Functions
+    Route::get('/all-listings',  [WebsiteController::class, 'allListings'])->name('websites.all_listing');
+    Route::get('/my-listings',  [WebsiteController::class, 'myListings'])->name('websites.my_listing');
 });
 
 Route::group(['prefix' => 'orders', 'name' => 'orders.'], function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/create', [OrderController::class, 'create'])->name('orders.create');
-    Route::post('/store', [OrderController::class, 'store'])->name('orders.store');
+
+    Route::get('/view-orders-as-seller', [OrderController::class, 'viewOrdersAsSeller'])->name('orders.view_orders_as_seller');
+
+    //Route::get('/create', [OrderController::class, 'create'])->name('orders.create');
+
+
     Route::get('/{id}/show', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/{id}/update', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('/{id}/destroy', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+    Route::get('/provide-details/{website_id}/{rate_id}', [OrderController::class, 'provideDetailsToOrderBacklink'])->name('orders.provide_details');
+    Route::post('/store/{rate_id}', [OrderController::class, 'store'])->name('orders.store');
+
+
+    Route::get('/update-order-status/{status}', [OrderController::class, 'updateOrderStatus'])->name('orders.update_order_status');
 });
+
+
+Route::get('/fetch-website-backlink-rates/{website_id}', [WebsiteController::class, 'getBacklinkRateByWebsiteId'])->name('website_backlink_rates');

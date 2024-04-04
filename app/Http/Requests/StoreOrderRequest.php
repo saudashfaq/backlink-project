@@ -11,7 +11,7 @@ class StoreOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,16 +22,28 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'buyer_id' => 'required|exists:users,id',
-            //'seller_id' => 'required|exists:users,id',
-            'website_id' => 'required|exists:websites,id',
-            //'content_required' => 'required|boolean',
-            'backlink_type' => 'required|in:backlink,guest_post', // Assuming BacklinkTypeEnum values
-            'order_amount' => 'required|numeric|min:0',
-            'order_details' => 'required|array',
-            'order_details.*.linkurl' => 'required|url',
-            'order_details.*.keyphrase' => 'required|string',
-            //'order_status' => 'required|in:open,closed,completed', // Assuming OrderStatusEnum values
+            
+            'Links.1' => 'required|url',
+            'Phrases.1' => 'required|string',
+            'Links' => 'required|array',
+            'Phrases' => 'required|array',
+            'Links.*' => 'nullable|url',
+            'Phrases.*' => 'nullable|string',
+            'instructions' =>'nullable|string|min:3|max:500',
+            
         ];
+    }
+
+    public function messages(): array {
+        return [
+            'Links.1' => "First Link is required and must be a valid URL.",
+            'Phrases.1' => "First Phrase field is required.",
+            'Links' => "Please provide at least one link.",
+            'Phrases' => "Please provide at least one Keyword phrase.",
+            'Links.*' => "The Link is required and must be a valid URL.",
+            'Phrases.*' => "The Phrase field is required.",
+            
+        ];
+        
     }
 }

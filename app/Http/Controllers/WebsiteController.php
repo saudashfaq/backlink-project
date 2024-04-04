@@ -27,6 +27,20 @@ class WebsiteController extends Controller
         return view('websites.index', ['websites' => $websites]);
     }
 
+    public function allListings() 
+    {
+        return $this->index();
+    }
+
+    public function myListings() {
+
+        $websites = Website::take(10)->where('user_id', auth()->user()->id)->with(['websiteBacklinkRates', 'categories'])->orderBy('id',  'desc')->get();
+
+        // Pass the websites to the view
+        return view('websites.index', ['websites' => $websites]);
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -168,7 +182,11 @@ class WebsiteController extends Controller
         try {
 
 
-            $website = Website::findOrFail($id);
+            $website = Website::where('id', $id)->where('user_id', auth()->user()->id)->first();
+
+            if(!$website){
+                abort(403);
+            }
             // Detach categories if there's a many-to-many relationship
             $website->categories()->detach();
 
@@ -188,5 +206,11 @@ class WebsiteController extends Controller
 
         // Redirect to the index page or any other page as needed
         return redirect()->route('websites.index');
+    }
+
+
+    public function getBacklinkRateByWebsiteId($website_id) 
+    {
+        return WebsiteBacklinkRate::where('website_id', $website_id)->get();
     }
 }

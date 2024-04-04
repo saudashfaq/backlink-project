@@ -52,15 +52,28 @@ class Order extends Model
 
 
     // Enums
-    public function getOrderStatus()
+    public function getOrderStatus(): string
     {
         return OrderStatusEnum::getList()[$this->order_status] ?? null;
     }
 
-    public function getBacklinkType()
+    public function getBacklinkType(): string
     {
         return BacklinkTypeEnum::getList()[$this->backlink_type] ?? null;
     }
 
 
+
+
+    // Define a mutator to automatically encode the order_details as JSON
+    public function setOrderDetailsAttribute($value): void
+    {
+        $this->attributes['order_details'] = json_encode($value);
+    }
+
+    // Define an accessor to automatically decode the order_details from JSON
+    public function getOrderDetailsAttribute($value): array|object
+    {
+        return json_decode($value, true);
+    }
 }
