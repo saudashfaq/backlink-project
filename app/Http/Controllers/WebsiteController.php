@@ -27,7 +27,7 @@ class WebsiteController extends Controller
         return view('websites.index', ['websites' => $websites]);
     }
 
-    public function allListings() 
+    public function allListings()
     {
         return $this->index();
     }
@@ -38,7 +38,7 @@ class WebsiteController extends Controller
 
         // Pass the websites to the view
         return view('websites.index', ['websites' => $websites]);
-        
+
     }
 
     /**
@@ -57,7 +57,7 @@ class WebsiteController extends Controller
     {
         try {
 
-            // Create a new website instance
+            // Create a new website instanc
             $website = new Website();
 
             // Fill the website instance with request data
@@ -198,7 +198,7 @@ class WebsiteController extends Controller
             Session::flash('success', 'Website deleted successfully');
 
         } catch (Exception $e) {
-            
+
             Log::error("An error occurred deleting a website: " . $e->getMessage());
             dd($e);
             Session::flash('error', 'Error deleting website.  Please try again later.');
@@ -209,7 +209,7 @@ class WebsiteController extends Controller
     }
 
 
-    public function getBacklinkRateByWebsiteId($website_id) 
+    public function getBacklinkRateByWebsiteId($website_id)
     {
         return WebsiteBacklinkRate::where('website_id', $website_id)->get();
     }
