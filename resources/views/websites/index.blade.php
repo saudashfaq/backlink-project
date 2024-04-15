@@ -3,53 +3,51 @@
 @section('title', 'Websites List')
 
 @section('content')
-    <h1>Websites List</h1>
-    <!-- Display success message if available -->
-    @if(Session::has('success'))
-        <div class="alert alert-success">
-            {{ Session::get('success') }}
-        </div>
-    @endif
-    <!-- Display error message if available -->
-    @if(Session::has('error'))
-        <div class="alert alert-danger">
-            {{ Session::get('error') }}
-        </div>
-    @endif
-    <a href="{{ route('websites.create') }}" class="btn btn-primary mb-3">Create New Website</a>
+    <div class="container">
+        <h1 class="my-4">Websites List</h1>
+        
+        @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
 
-    @if(count($websites) > 0)
-        <ul class="list-group">
-            @foreach($websites as $website)
-                <li class="list-group-item">
-                    <strong>{{ $website->url }}</strong>
-                    <br>
-                    Details: {{ $website->details ?? 'N/A' }}
-                    <br>
-                    Status: {{ $website->website_status }}
-                    <br>
-                    Enabled: {{ $website->is_visible  ? "Yes" : "No" }}
-                    
-                </li>
-                <li>
-                    <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary">View</a>
-                    <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning">Edit</a>
+        @if(Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('error') }}
+            </div>
+        @endif
 
-                    
-                    <form method="POST" action="{{ route( 'websites.destroy', $website->id ) }}">
-                        @csrf
-                        @method('DELETE')
-                        
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                    
-                        
-                    <!-- Add delete functionality if required -->
-                </li>
-                
-            @endforeach
-        </ul>
-    @else
-        <p>No websites found.</p>
-    @endif
+        <a href="{{ route('websites.create') }}" class="btn btn-primary mb-3">Create New Website</a>
+
+        @if(count($websites) > 0)
+            <div class="row">
+                @foreach($websites as $website)
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $website->url }}</h5>
+                                <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
+                                <p class="card-text mb-1">Status: {{ $website->website_status }}</p>
+                                <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div>
+                                        <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary mr-2">View</a>
+                                        <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2">Edit</a>
+                                    </div>
+                                    <form method="POST" action="{{ route('websites.destroy', $website->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p>No websites found.</p>
+        @endif
+    </div>
 @endsection
