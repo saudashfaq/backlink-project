@@ -39,6 +39,11 @@
                     <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">View Orders as Sellers</a>
                 </li>
             </ul>
+            <!-- Toggle buttons -->
+            <div class="navbar-nav ml-auto">
+                <button class="btn btn-success mr-2">Buyer</button>
+                <button class="btn btn-dark">Seller</button>
+            </div>
         </div>
     </nav>
 
