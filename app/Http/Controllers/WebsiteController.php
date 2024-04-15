@@ -35,7 +35,6 @@ class WebsiteController extends Controller
     public function myListings() {
 
         $websites = Website::take(10)->where('user_id', auth()->user()->id)->with(['websiteBacklinkRates', 'categories'])->orderBy('id',  'desc')->get();
-
         // Pass the websites to the view
         return view('websites.index', ['websites' => $websites]);
 
@@ -167,7 +166,7 @@ class WebsiteController extends Controller
 
             Session::flash('success', 'Website has been successfully edited.');
         } catch (Exception $e) {
-            Log::error("An exception occured when updating a website: " . $e->getMessage());
+            Log::error("An exception occurred when updating a website: " . $e->getMessage());
             Session::flash('error', 'There was an issue saving your changes. Please try again later.');
         }
 
@@ -213,4 +212,45 @@ class WebsiteController extends Controller
     {
         return WebsiteBacklinkRate::where('website_id', $website_id)->get();
     }
+
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $category = $request->input('category');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $minWordCount = $request->input('min_word_count');
+        $maxWordCount = $request->input('max_word_count');
+
+        $websites = Website::query();
+
+        if ($search) {
+            $websites->where('name', 'like', '%' . $search . '%');
+        }
+
+
+        $websites->with(['categories' => function ($query) use ($category, $minPrice, $maxPrice, $minWordCount, $maxWordCount) {
+            if ($category) {
+                $query->where('category', 'LIKE', '%' . $category . '%');
+            }
+            if ($minPrice) {
+                $query->where('price', '>=', $minPrice);
+            }
+            if ($maxPrice) {
+                $query->where('price', '<=', $maxPrice);
+            }
+            if ($minWordCount) {
+                $query->where('word_count', '>=', $minWordCount);
+            }
+            if ($maxWordCount) {
+                $query->where('word_count', '<=', $maxWordCount);
+            }
+        }]);
+
+        $websites = $websites->get();
+
+        return view('websites.index', compact('websites'));
+    }
+
 }

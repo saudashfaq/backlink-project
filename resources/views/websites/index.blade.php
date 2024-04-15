@@ -29,24 +29,24 @@
                     Status: {{ $website->website_status }}
                     <br>
                     Enabled: {{ $website->is_visible  ? "Yes" : "No" }}
-                    
+
                 </li>
                 <li>
                     <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary">View</a>
                     <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning">Edit</a>
 
-                    
+
                     <form method="POSt" action="{{ route( 'websites.destroy', $website->id ) }}">
                         @csrf
                         @method('DELETE')
-                        
+
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                    
-                        
+
+
                     <!-- Add delete functionality if required -->
                 </li>
-                
+
             @endforeach
         </ul>
     @else
