@@ -36,7 +36,7 @@
                     <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning">Edit</a>
 
                     
-                    <form method="POSt" action="{{ route( 'websites.destroy', $website->id ) }}">
+                    <form method="POST" action="{{ route( 'websites.destroy', $website->id ) }}">
                         @csrf
                         @method('DELETE')
                         
