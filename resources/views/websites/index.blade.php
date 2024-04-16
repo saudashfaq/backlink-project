@@ -18,8 +18,8 @@
             </div>
         @endif
 
-        <div class="row mb-3">
-            <div class="col-md-6 order-md-2">
+             <!-- Search Bar -->
+             <div class="col-md-6 order-md-2">
                 <form action="#" method="GET" class="form-inline">
                     <div class="form-group mr-2">
                         <input type="text" class="form-control" name="search" placeholder="Search...">
@@ -29,15 +29,132 @@
                     </button>
                 </form>
             </div>
-            <div class="col-md-6 order-md-1">
+
+            <!-- Create New Website Button -->
+            <div class="col-md-3 order-md-3">
                 <a href="{{ route('websites.create') }}" class="btn btn-primary">Create New Website</a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Filter Section -->
+            <div class="col-md-3 order-md-1">
+                <div class="card">
+                    <div class="card-body" style="background-color: #dfe0e1">
+                        <h5 class="card-title">Filter</h5>
+                        <form action="#" method="GET">
+                            <!-- Max Price -->
+                            <div class="form-group">
+                                <label for="max_price">Max Price</label>
+                                <input type="number" class="form-control" id="max_price" name="max_price">
+                            </div>
+                            <!-- Min Price -->
+                            <div class="form-group">
+                                <label for="min_price">Min Price</label>
+                                <input type="number" class="form-control" id="min_price" name="min_price">
+                            </div>
+                            <!-- Word Count -->
+                            <div class="form-group">
+                                <label for="word_count">Word Count</label>
+                                <input type="number" class="form-control" id="word_count" name="word_count">
+                            </div>
+                            <!-- Sorting Options -->
+                            <div class="form-group">
+                                <label for="sorting">Sort By</label>
+                                <select class="form-control" id="sorting" name="sorting">
+                                    <option value="1">Alphabetical (A-Z)</option>
+                                    <option value="2">Alphabetical (Z-A)</option>
+                                    <option value="3">Price (Low to High)</option>
+                                    <option value="4">Price (High to Low)</option>
+                                </select>
+                            </div>
+                            <!-- Submit Button -->
+                            {{-- <button type="submit" class="btn btn-primary">Apply Filters</button> --}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional Filter Columns -->
+            <div class="col-md-3 order-md-1">
+                <div class="card">
+                    <div class="card-body" style="background-color: #dfe0e1">
+                        <!-- Duplicate Filter Column Code Here -->
+                        <h5 class="card-title">Filter</h5>
+                        <form action="#" method="GET">
+                            <!-- Max Price -->
+                            <div class="form-group">
+                                <label for="max_price">Max Price</label>
+                                <input type="number" class="form-control" id="max_price" name="max_price">
+                            </div>
+                            <!-- Min Price -->
+                            <div class="form-group">
+                                <label for="min_price">Min Price</label>
+                                <input type="number" class="form-control" id="min_price" name="min_price">
+                            </div>
+                            <!-- Word Count -->
+                            <div class="form-group">
+                                <label for="word_count">Word Count</label>
+                                <input type="number" class="form-control" id="word_count" name="word_count">
+                            </div>
+                            <!-- Sorting Options -->
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="1">Agriculture</option>
+                                    <option value="2">Business</option>
+                                    <option value="3">Web-Development</option>
+                                    <option value="4">Books</option>
+                                </select>
+                            </div>
+                            <!-- Submit Button -->
+                            {{-- <button type="submit" class="btn btn-primary">Apply Filters</button> --}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 order-md-1">
+                <div class="card">
+                    <div class="card-body" style="background-color: #dfe0e1">
+                        <!-- Duplicate Filter Column Code Here -->
+                        <h5 class="card-title">Filter</h5>
+                        <form action="#" method="GET">
+                            <!-- Max Price -->
+                            <div class="form-group">
+                                <label for="max_price">Max Price</label>
+                                <input type="number" class="form-control" id="max_price" name="max_price">
+                            </div>
+                            <!-- Min Price -->
+                            <div class="form-group">
+                                <label for="min_price">Min Price</label>
+                                <input type="number" class="form-control" id="min_price" name="min_price">
+                            </div>
+                            <!-- Word Count -->
+                            <div class="form-group">
+                                <label for="word_count">Word Count</label>
+                                <input type="number" class="form-control" id="word_count" name="word_count">
+                            </div>
+                            <!-- Sorting Options -->
+                            <div class="form-group">
+                                <label for="sorting">Sort By</label>
+                                <select class="form-control" id="sorting" name="sorting">
+                                    <option value="1">Alphabetical (A-Z)</option>
+                                    <option value="2">Alphabetical (Z-A)</option>
+                                    <option value="3">Price (Low to High)</option>
+                                    <option value="4">Price (High to Low)</option>
+                                </select>
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
         @if(count($websites) > 0)
             <div class="row">
                 @foreach($websites as $website)
-                    <div class="col-md-6 mb-4">
+                    <div class="col-md-6 mb-4 mt-2">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $website->url }}</h5>
@@ -65,59 +182,3 @@
         @endif
     </div>
 @endsection
-
-
-
-{{-- @extends('layouts.app')
-
-@section('title', 'Websites List')
-
-@section('content')
-    <div class="container">
-        <h1 class="my-4">Websites List</h1>
-        
-        @if(Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
-        @endif
-
-        @if(Session::has('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ Session::get('error') }}
-            </div>
-        @endif
-
-        <a href="{{ route('websites.create') }}" class="btn btn-primary mb-3">Create New Website</a>
-
-        @if(count($websites) > 0)
-            <div class="row">
-                @foreach($websites as $website)
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $website->url }}</h5>
-                                <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
-                                <p class="card-text mb-1">Status: {{ $website->website_status }}</p>
-                                <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary mr-2">View</a>
-                                        <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2">Edit</a>
-                                    </div>
-                                    <form method="POST" action="{{ route('websites.destroy', $website->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <p>No websites found.</p>
-        @endif
-    </div>
-@endsection --}}
