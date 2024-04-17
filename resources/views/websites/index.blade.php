@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="my-4">Websites List</h1>
+        <h1 class="my-4 text-center display-3">Websites List</h1>
         
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
@@ -40,7 +40,7 @@
             <!-- Filter Section -->
             <div class="col-md-3 order-md-1">
                 <div class="card">
-                    <div class="card-body" style="background-color: #dfe0e1">
+                    <div class="card-body">
                         <h5 class="card-title">Filter</h5>
                         <form action="#" method="GET">
                             <!-- Max Price -->
@@ -62,14 +62,13 @@
                             <div class="form-group">
                                 <label for="sorting">Sort By</label>
                                 <select class="form-control" id="sorting" name="sorting">
-                                    <option value="1">Alphabetical (A-Z)</option>
-                                    <option value="2">Alphabetical (Z-A)</option>
-                                    <option value="3">Price (Low to High)</option>
-                                    <option value="4">Price (High to Low)</option>
+                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
+                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
+                                    <option value="price_asc">Price (Low to High)</option>
+                                    <option value="price_desc">Price (High to Low)</option>
                                 </select>
                             </div>
-                            <!-- Submit Button -->
-                            {{-- <button type="submit" class="btn btn-primary">Apply Filters</button> --}}
+
                         </form>
                     </div>
                 </div>
@@ -77,7 +76,7 @@
             <!-- Additional Filter Columns -->
             <div class="col-md-3 order-md-1">
                 <div class="card">
-                    <div class="card-body" style="background-color: #dfe0e1">
+                    <div class="card-body">
                         <!-- Duplicate Filter Column Code Here -->
                         <h5 class="card-title">Filter</h5>
                         <form action="#" method="GET">
@@ -100,21 +99,20 @@
                             <div class="form-group">
                                 <label for="category">Category</label>
                                 <select class="form-control" id="category" name="category">
-                                    <option value="1">Agriculture</option>
-                                    <option value="2">Business</option>
-                                    <option value="3">Web-Development</option>
-                                    <option value="4">Books</option>
+                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
+                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
+                                    <option value="price_asc">Price (Low to High)</option>
+                                    <option value="price_desc">Price (High to Low)</option>
                                 </select>
                             </div>
-                            <!-- Submit Button -->
-                            {{-- <button type="submit" class="btn btn-primary">Apply Filters</button> --}}
+                            
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 order-md-1">
                 <div class="card">
-                    <div class="card-body" style="background-color: #dfe0e1">
+                    <div class="card-body">
                         <!-- Duplicate Filter Column Code Here -->
                         <h5 class="card-title">Filter</h5>
                         <form action="#" method="GET">
@@ -137,10 +135,10 @@
                             <div class="form-group">
                                 <label for="sorting">Sort By</label>
                                 <select class="form-control" id="sorting" name="sorting">
-                                    <option value="1">Alphabetical (A-Z)</option>
-                                    <option value="2">Alphabetical (Z-A)</option>
-                                    <option value="3">Price (Low to High)</option>
-                                    <option value="4">Price (High to Low)</option>
+                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
+                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
+                                    <option value="price_asc">Price (Low to High)</option>
+                                    <option value="price_desc">Price (High to Low)</option>
                                 </select>
                             </div>
                             <!-- Submit Button -->
@@ -156,7 +154,7 @@
                 @foreach($websites as $website)
                     <div class="col-md-6 mb-4 mt-2">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" id="cards-body">
                                 <h5 class="card-title">{{ $website->url }}</h5>
                                 <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
                                 <p class="card-text mb-1">Status: {{ $website->website_status }}</p>

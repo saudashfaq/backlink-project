@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="my-4">Purchase Now</h1>
+        <h1 class="my-4">Websites List</h1>
 
         <div class="card mb-4 text-info bg-dark">
             <div class="card-body">
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="card mb-4" style="background-color: #e9ecef;">
+        <div class="card mb-4" id="show-cat">
             <div class="card-body">
                 <h5 class="card-title">Categories</h5>
                 <ul class="list-group">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="card mb-4" style="background-color: #d6d8db;">
+        <div class="card mb-4" id="show-pac">
             <div class="card-body">
                 <h5 class="card-title">Packages</h5>
                 <ul class="list-group">

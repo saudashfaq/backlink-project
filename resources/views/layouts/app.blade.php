@@ -10,27 +10,23 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/ui-design.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <!-- Additional stylesheets or custom styles -->
-    <style>
-        body{
-            background-color: #dfe0e1;
-            padding-top: 56px;
-        }
-    </style>
+
     <!-- Optional: Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #dfe0e1">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <!-- Navbar content -->
         <a class="navbar-brand" href="/">Your App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+            
             {{-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -56,6 +52,7 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li> --}}
+
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
                 <button class="btn btn-success mr-2">Buyer</button>
@@ -66,8 +63,8 @@
 
     <div class="container-fluid">
         <div class="row">
-          <!-- Vertical Navbar -->
-          <nav class="col-md-2 col-lg-2 d-md-block sidebar" style="background-color: #dfe0e1">
+          <!-- Vertical Navbar(sidebar) -->
+          <nav class="col-md-2 col-lg-2 d-md-block sidebar">
             <div class="position-sticky fixed-top">
                 <ul class="navbar-nav">
                     <li class="nav-item">

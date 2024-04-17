@@ -68,7 +68,7 @@
             <label for="backlink_rates">Packages</label>
             <div id="backlink_rates">
                 @foreach($website->websitebacklinkrates as $index => $rate)
-                <div class="rate mb-3 p-3" style="background-color: #f0f8ff;">
+                <div class="rate mb-3 p-3">
                     <input type="hidden" name="backlink_rates[{{ $index }}][id]" value="{{ $rate->id }}">
                     <label>Words Count:</label>
                     <input type="text" name="backlink_rates[{{ $index }}][words_count]" value="{{ $rate->words_count }}" class="form-control">
