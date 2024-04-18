@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="my-4 text-center display-3">Websites List</h1>
+        <h1 class="my-4 text-center display-3" id="head">Websites List</h1>
         
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
@@ -31,123 +31,129 @@
             </div>
 
             <!-- Create New Website Button -->
-            <div class="col-md-3 order-md-3">
+            {{-- <div class="col-md-3 order-md-3">
                 <a href="{{ route('websites.create') }}" class="btn btn-primary">Create New Website</a>
-            </div>
+            </div> --}}
         </div>
         
-        <div class="row">
-            <!-- Filter Section -->
-            <div class="col-md-3 order-md-1">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Filter</h5>
-                        <form action="#" method="GET">
-                            <!-- Max Price -->
-                            <div class="form-group">
-                                <label for="max_price">Max Price</label>
-                                <input type="number" class="form-control" id="max_price" name="max_price">
-                            </div>
-                            <!-- Min Price -->
-                            <div class="form-group">
-                                <label for="min_price">Min Price</label>
-                                <input type="number" class="form-control" id="min_price" name="min_price">
-                            </div>
-                            <!-- Word Count -->
-                            <div class="form-group">
-                                <label for="word_count">Word Count</label>
-                                <input type="number" class="form-control" id="word_count" name="word_count">
-                            </div>
-                            <!-- Sorting Options -->
-                            <div class="form-group">
-                                <label for="sorting">Sort By</label>
-                                <select class="form-control" id="sorting" name="sorting">
-                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
-                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
-                                    <option value="price_asc">Price (Low to High)</option>
-                                    <option value="price_desc">Price (High to Low)</option>
-                                </select>
-                            </div>
-
-                        </form>
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Filter Section -->
+                <div class="col-md-12">
+                    <h1 class="text-center" id="filter">Filter</h1>
+                </div>
+                <div class="col-md-3 order-md-1">
+                    <!-- First Filter Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <form action="#" method="GET">
+                                <!-- Max Price -->
+                                <div class="form-group">
+                                    <label for="max_price">Max Price</label>
+                                    <input type="number" class="form-control" id="max_price" name="max_price">
+                                </div>
+                                <!-- Min Price -->
+                                <div class="form-group">
+                                    <label for="min_price">Min Price</label>
+                                    <input type="number" class="form-control" id="min_price" name="min_price">
+                                </div>
+                                <!-- Word Count -->
+                                <div class="form-group">
+                                    <label for="word_count">Word Count</label>
+                                    <input type="number" class="form-control" id="word_count" name="word_count">
+                                </div>
+                                <!-- Sorting Options -->
+                                <div class="form-group">
+                                    <label for="sorting">Sort By</label>
+                                    <select class="form-control" id="sorting" name="sorting">
+                                        <option value="alphabetical_asc">Alphabetical (A-Z)</option>
+                                        <option value="alphabetical_desc">Alphabetical (Z-A)</option>
+                                        <option value="price_asc">Price (Low to High)</option>
+                                        <option value="price_desc">Price (High to Low)</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Additional Filter Columns -->
-            <div class="col-md-3 order-md-1">
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Duplicate Filter Column Code Here -->
-                        <h5 class="card-title">Filter</h5>
-                        <form action="#" method="GET">
-                            <!-- Max Price -->
-                            <div class="form-group">
-                                <label for="max_price">Max Price</label>
-                                <input type="number" class="form-control" id="max_price" name="max_price">
-                            </div>
-                            <!-- Min Price -->
-                            <div class="form-group">
-                                <label for="min_price">Min Price</label>
-                                <input type="number" class="form-control" id="min_price" name="min_price">
-                            </div>
-                            <!-- Word Count -->
-                            <div class="form-group">
-                                <label for="word_count">Word Count</label>
-                                <input type="number" class="form-control" id="word_count" name="word_count">
-                            </div>
-                            <!-- Sorting Options -->
-                            <div class="form-group">
-                                <label for="category">Category</label>
-                                <select class="form-control" id="category" name="category">
-                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
-                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
-                                    <option value="price_asc">Price (Low to High)</option>
-                                    <option value="price_desc">Price (High to Low)</option>
-                                </select>
-                            </div>
-                            
-                        </form>
+                <div class="col-md-3 order-md-1">
+                    <!-- Second Filter Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Duplicate Filter Column Code Here -->
+                            <h5 class="card-title"></h5>
+                            <form action="#" method="GET">
+                                <!-- Max Price -->
+                                <div class="form-group">
+                                    <label for="max_price">Max Price</label>
+                                    <input type="number" class="form-control" id="max_price" name="max_price">
+                                </div>
+                                <!-- Min Price -->
+                                <div class="form-group">
+                                    <label for="min_price">Min Price</label>
+                                    <input type="number" class="form-control" id="min_price" name="min_price">
+                                </div>
+                                <!-- Word Count -->
+                                <div class="form-group">
+                                    <label for="word_count">Word Count</label>
+                                    <input type="number" class="form-control" id="word_count" name="word_count">
+                                </div>
+                                <!-- Sorting Options -->
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select class="form-control" id="category" name="category">
+                                        <option value="busines">Busines</option>
+                                        <option value="web-development">Web-development</option>
+                                        <option value="books">Books</option>
+                                        <option value="design">Design</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 order-md-1">
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Duplicate Filter Column Code Here -->
-                        <h5 class="card-title">Filter</h5>
-                        <form action="#" method="GET">
-                            <!-- Max Price -->
-                            <div class="form-group">
-                                <label for="max_price">Max Price</label>
-                                <input type="number" class="form-control" id="max_price" name="max_price">
-                            </div>
-                            <!-- Min Price -->
-                            <div class="form-group">
-                                <label for="min_price">Min Price</label>
-                                <input type="number" class="form-control" id="min_price" name="min_price">
-                            </div>
-                            <!-- Word Count -->
-                            <div class="form-group">
-                                <label for="word_count">Word Count</label>
-                                <input type="number" class="form-control" id="word_count" name="word_count">
-                            </div>
-                            <!-- Sorting Options -->
-                            <div class="form-group">
-                                <label for="sorting">Sort By</label>
-                                <select class="form-control" id="sorting" name="sorting">
-                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
-                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
-                                    <option value="price_asc">Price (Low to High)</option>
-                                    <option value="price_desc">Price (High to Low)</option>
-                                </select>
-                            </div>
-                            <!-- Submit Button -->
-                            <button type="submit" class="btn btn-primary">Apply Filters</button>
-                        </form>
+                <div class="col-md-3 order-md-1">
+                    <!-- Third Filter Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Duplicate Filter Column Code Here -->
+                            <h5 class="card-title"></h5>
+                            <form action="#" method="GET">
+                                <!-- Max Price -->
+                                <div class="form-group">
+                                    <label for="max_price">Max Price</label>
+                                    <input type="number" class="form-control" id="max_price" name="max_price">
+                                </div>
+                                <!-- Min Price -->
+                                <div class="form-group">
+                                    <label for="min_price">Min Price</label>
+                                    <input type="number" class="form-control" id="min_price" name="min_price">
+                                </div>
+                                <!-- Word Count -->
+                                <div class="form-group">
+                                    <label for="word_count">Word Count</label>
+                                    <input type="number" class="form-control" id="word_count" name="word_count">
+                                </div>
+                                <!-- Sorting Options -->
+                                <div class="form-group">
+                                    <label for="sorting">Sort By</label>
+                                    <select class="form-control" id="sorting" name="sorting">
+                                        <option value="alphabetical_asc">Alphabetical (A-Z)</option>
+                                        <option value="alphabetical_desc">Alphabetical (Z-A)</option>
+                                        <option value="price_asc">Price (Low to High)</option>
+                                        <option value="price_desc">Price (High to Low)</option>
+                                    </select>
+                                </div>
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary">Apply Filters</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    
 
         @if(count($websites) > 0)
             <div class="row">

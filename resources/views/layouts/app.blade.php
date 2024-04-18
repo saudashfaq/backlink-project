@@ -11,6 +11,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    {{-- <script src="{{asset('assets/css/javascript/main.js')}}"></script> --}}
+    
     <!-- Additional stylesheets or custom styles -->
 
     <!-- Optional: Font Awesome for icons -->
@@ -63,25 +65,51 @@
 
     <div class="container-fluid">
         <div class="row">
-          <!-- Vertical Navbar(sidebar) -->
-          <nav class="col-md-2 col-lg-2 d-md-block sidebar">
-            <div class="position-sticky fixed-top">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/websites">Websites</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/orders">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">View Orders as Sellers</a>
-                    </li>
-                </ul>
-            </div>
-          </nav>
+            <!-- Vertical Navbar(sidebar) -->
+<nav class="col-md-2 col-lg-2 d-md-block sidebar">
+    <div class="position-sticky fixed-top">
+        <!-- Dropdown Menu -->
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog"></i> My assets
+                </a>
+                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                    <!-- Create New Website Button -->
+                    <a class="dropdown-item create-website-btn" href="{{ route('websites.create') }}">Create New Website</a>
+                    <!-- Other links with bullet point icons -->
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
+            <!-- Home Link -->
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <!-- Other Links -->
+            <li class="nav-item">
+                <a class="nav-link" href="/websites">
+                    <i class="fas fa-globe"></i> Websites
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/orders">
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">
+                    <i class="fas fa-user"></i> View Orders as Sellers
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+            
 
     <div class="container mt-4">
         @yield('content')
