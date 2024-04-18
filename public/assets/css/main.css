@@ -1,0 +1,96 @@
+body{
+  background-color: #dfe0e1;
+  font-family: 'ubuntu-regular', "Schadow BT";
+  padding-top: 56px;
+}
+
+h1 {
+  /* font-size: 60px; */
+  font-weight: 500;
+  color: #553c9a;
+  /*border: 4px solid #000;*/
+  text-shadow: 0px 4px 10px rgba(179, 147, 211, 0.8),
+               2px 2px 4px rgba(179, 147, 211, 0.1),
+               3px 4px 4px rgba(179, 147, 211, 0.15),
+               4px 6px 4px rgba(179, 147, 211, 0.2),
+               5px 8px 4px rgba(179, 147, 211, 0.25);
+}
+
+/* h3{
+  margin: 1em 0 0.5em 0;
+  color: #553c9a;
+  font-weight: normal;
+  font-family: 'Ultra', sans-serif;
+  font-size: 50px;
+  line-height: 42px;
+  text-transform: uppercase;
+  text-shadow: 0 2px white, 0 3px #777;
+} */
+
+#max_price, #min_price, #word_count, #category, #sorting{
+    background-color: #c6c7c8;
+}
+
+.navbar, .sidebar {
+    background-color: #dfe0e1;
+    z-index: 1000;
+  }
+
+  .sidebar {
+    background-color: #dfe0e1;
+  }
+
+  .card-body{
+    background-color: #dfe0e1;
+  }
+
+  #cards-body{
+    background-color: whitesmoke;
+  }
+
+  #show-cat{
+    background-color: #e9ecef;
+  }
+
+  #show-pac{
+    background-color: #d6d8db;
+  }
+
+  .rate{
+    background-color: #f0f8ff;
+  }
+   
+  .navbar-nav .nav-link {
+    color: #333; /* Link text color */
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+
+  /* Link Hover Effect */
+  .navbar-nav .nav-link:hover {
+    color: #7c7d7d; /* Link text color on hover */
+  }
+
+  /* Link Animation */
+  .navbar-nav .nav-link {
+    position: relative;
+    overflow: hidden;
+  }
+  .navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c6c7c8; /* Animation color */
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .navbar-nav .nav-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
