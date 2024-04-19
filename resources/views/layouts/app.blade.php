@@ -28,33 +28,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            
-            {{-- <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/websites">Websites</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/orders">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">View Orders as Sellers</a>
-                </li>
-            </ul> --}}
-            {{-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li> --}}
-
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
                 <button class="btn btn-success mr-2">Buyer</button>
@@ -78,9 +51,9 @@
                     <!-- Create New Website Button -->
                     <a class="dropdown-item create-website-btn" href="{{ route('websites.create') }}">Create New Website</a>
                     <!-- Other links with bullet point icons -->
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
+                    <a class="dropdown-item" href="#">Verified publishers</a>
+                    <a class="dropdown-item" href="#">All publishers</a>
+                    <a class="dropdown-item" href="#">Faverite publishers</a>
                 </div>
             </li>
             <!-- Home Link -->
@@ -103,6 +76,38 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">
                     <i class="fas fa-user"></i> View Orders as Sellers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-tasks"></i> Tasks
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-shopping-cart"></i> Content Purchase
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-list"></i> Lists
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-link"></i> Recommended sites
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-wallet"></i> Balance
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-money-bill-wave"></i> Earn
                 </a>
             </li>
         </ul>

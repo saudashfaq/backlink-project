@@ -27,7 +27,7 @@ body{
   text-shadow: 0 2px white, 0 3px #777;
 } */
 
-#max_price, #min_price, #word_count, #category, #sorting{
+#max_price, #min_price, #min_word_count, #max_word_count, #sorting, #category{
     background-color: #c6c7c8;
 }
 
@@ -64,7 +64,7 @@ body{
     color: #333; /* Link text color */
     text-decoration: none;
     padding: 10px 15px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     transition: color 0.3s ease; /* Smooth color transition on hover */
   }
 
@@ -85,7 +85,7 @@ body{
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #c6c7c8; /* Animation color */
+    background-color: #c6c7c8;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
@@ -94,19 +94,52 @@ body{
     visibility: visible;
     transform: scaleX(1);
   }
-  .custom-dropdown {
-    background-color: #7c7d7d; /* Default background color */
-    border: 1px solid #7c7d7d;
+
+/* Custom styles for dropdown menu */
+.custom-dropdown {
+  background-color: #dfe0e1;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
-.custom-dropdown:hover {
-    background-color: #e9ecef; /* Background color on hover */
+.custom-dropdown a.dropdown-item {
+  color: #333;
 }
 
-.create-website-btn:hover {
-  background-color: #e9ecef;
+.custom-dropdown a.dropdown-item:hover {
+  background-color: #cfd0d1;
+}
+.custom-dropdown .create-website-btn {
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #333;
 }
 
-.create-website-btn{
-  color: whitesmoke;
+.custom-dropdown .create-website-btn:hover {
+  background-color: #cfd0d1;
+  border-color: #333;
+  color: #fff;
+}
+
+/* Style the dropdown select options */
+.form-control {
+  /* padding: 8px 12px;  */
+  /* font-size: 16px;  */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333; 
+  /* width: 100%;  */
+}
+
+/* Style the dropdown select options on hover */
+.form-control:hover {
+  background-color: #f9f9f9;
+}
+
+/* Style the dropdown select options when focused */
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
 }
