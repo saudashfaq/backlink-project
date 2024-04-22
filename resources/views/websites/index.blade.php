@@ -119,31 +119,30 @@
     
 
         @if(count($websites) > 0)
-            <div class="row">
-                @foreach($websites as $website)
-                    <div class="col-md-6 mb-4 mt-2">
-                        <div class="card">
-                            <div class="card-body" id="cards-body">
-                                <h5 class="card-title">{{ $website->url }}</h5>
-                                <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
-                                <p class="card-text mb-1">Status: {{ $website->website_status }}</p>
-                                <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div>
-                                        <a href="{{ route('websites.show', $website->id) }}" class="btn btn-info mr-2">View</a>
-                                        <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2">Edit</a>
-                                    </div>
-                                    <form method="POST" action="{{ route('websites.destroy', $website->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+<div class="row">
+    @foreach($websites as $website)
+    <div class="col-md-6 mb-4 mt-2">
+        <div class="card website-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ $website->url }}</h5>
+                <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
+                <p class="card-text mb-1">Status: {{ $website->website_status }}</p>
+                <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
+                <div class="button-group mt-3">
+                    <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary mr-2">View</a>
+                    <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2">Edit</a>
+                    <a href="/" class="btn btn-dark mr-2">Purchase</a>
+                    <form method="POST" action="{{ route('websites.destroy', $website->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
+        </div>
+    </div>
+    @endforeach
+</div>
         @else
             <p>No websites found.</p>
         @endif
