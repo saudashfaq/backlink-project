@@ -36,7 +36,6 @@
             </div>
             
 
-            <!-- Create New Website Button -->
             
         </div>
         
@@ -46,69 +45,76 @@
                 <div class="col-md-12">
                     <h1 class="text-center" id="filter">Filter</h1>
                 </div>
-                <div class="col-md-4">
-                    <!-- First Filter Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>
-                            <form action="#" method="GET">
-                                <!-- Max Price -->
-                                <div class="form-group">
-                                    <label for="max_price">Max Price</label>
-                                    <input type="number" class="form-control" id="max_price" name="max_price">
+                <!-- Single Form Tag -->
+                <form action="#" method="GET" class="col-md-8">
+                    <div class="row">
+                        <!-- First Filter Column -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <!-- Max Price -->
+                                    <div class="form-group">
+                                        <label for="max_price">Max Price</label>
+                                        <input type="number" class="form-control" id="max_price" name="max_price">
+                                    </div>
+                                    <!-- Min Price -->
+                                    <div class="form-group">
+                                        <label for="min_price">Min Price</label>
+                                        <input type="number" class="form-control" id="min_price" name="min_price">
+                                    </div>
+                                    <!-- Category -->
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select class="form-control" id="category" name="category">
+                                            <option value="">Select a category</option>
+                                            <option value="busines">Busines</option>
+                                            <option value="web-development">Web-development</option>
+                                            <option value="books">Books</option>
+                                            <option value="design">Design</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <!-- Min Price -->
-                                <div class="form-group">
-                                    <label for="min_price">Min Price</label>
-                                    <input type="number" class="form-control" id="min_price" name="min_price">
+                            </div>
+                        </div>
+                        <!-- Second Filter Column -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <!-- Sorting Options -->
+                                    <div class="form-group">
+                                        <label for="sorting">Sort By</label>
+                                        <select class="form-control" id="sorting" name="sorting">
+                                            <option value="">Sorting</option>
+                                            <option value="alphabetical_asc">Alphabetical (A-Z)</option>
+                                            <option value="alphabetical_desc">Alphabetical (Z-A)</option>
+                                            <option value="price_asc">Price (Low to High)</option>
+                                            <option value="price_desc">Price (High to Low)</option>
+                                        </select>
+                                    </div>
+                                    <!-- Min Word Count -->
+                                    <div class="form-group">
+                                        <label for="min_word_count">Min Word Count</label>
+                                        <input type="number" class="form-control" id="min_word_count" name="min_word_count">
+                                    </div>
+                                    <!-- Max Word Count -->
+                                    <div class="form-group">
+                                        <label for="max_word_count">Max Word Count</label>
+                                        <input type="number" class="form-control" id="max_word_count" name="max_word_count">
+                                    </div>
                                 </div>
-                                <!-- Category -->
-                                <div class="form-group">
-                                    <label for="category">Category</label>
-                                    <select class="form-control" id="category" name="category">
-                                        <option value="">Select a category</option>
-                                        <option value="busines">Busines</option>
-                                        <option value="web-development">Web-development</option>
-                                        <option value="books">Books</option>
-                                        <option value="design">Design</option>
-                                    </select>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <!-- Second Filter Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Sorting Options -->
-                            <div class="form-group">
-                                <label for="sorting">Sort By</label>
-                                <select class="form-control" id="sorting" name="sorting">
-                                    <option value="">Sorting</option>
-                                    <option value="alphabetical_asc">Alphabetical (A-Z)</option>
-                                    <option value="alphabetical_desc">Alphabetical (Z-A)</option>
-                                    <option value="price_asc">Price (Low to High)</option>
-                                    <option value="price_desc">Price (High to Low)</option>
-                                </select>
-                            </div>
-                            <!-- Min Word Count -->
-                            <div class="form-group">
-                                <label for="min_word_count">Min Word Count</label>
-                                <input type="number" class="form-control" id="min_word_count" name="min_word_count">
-                            </div>
-                            <!-- Max Word Count -->
-                            <div class="form-group">
-                                <label for="max_word_count">Max Word Count</label>
-                                <input type="number" class="form-control" id="max_word_count" name="max_word_count">
-                            </div>
-                            <!-- Apply Filters Button -->
-                            <button type="submit" class="btn btn-primary">Apply Filters</button>
-                        </div>
+                    <!-- Apply Filters Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Apply Filters</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+        
         
     
 
