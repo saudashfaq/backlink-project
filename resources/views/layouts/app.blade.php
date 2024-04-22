@@ -26,7 +26,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            
+
             {{-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -55,9 +55,10 @@
 
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
-                <button class="btn btn-success mr-2">Buyer</button>
-                <button class="btn btn-dark">Seller</button>
+                <a href="" class="btn btn-success mr-2">Buyer</a>
+                <a href="" class="btn btn-dark">Seller</a>
             </div>
+
         </div>
     </nav>
 
@@ -82,7 +83,7 @@
                 </ul>
             </div>
           </nav>
-
+        </div>
     <div class="container mt-4">
         @yield('content')
     </div>

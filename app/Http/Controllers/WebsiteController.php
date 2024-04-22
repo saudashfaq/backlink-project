@@ -21,7 +21,7 @@ class WebsiteController extends Controller
     public function index()
     {
         // Fetch all websites from the database along with websiteBacklinkRates one cheepest record
-        $websites = Website::take(10)->with(['websiteBacklinkRates', 'categories'])->orderBy('id',  'desc')->get();
+        $websites = Website::take(10)->with(['websiteBacklinkRates', 'categories'])->orderBy('id', 'desc')->get();
 
         // Pass the websites to the view
         return view('websites.index', ['websites' => $websites]);
@@ -32,9 +32,10 @@ class WebsiteController extends Controller
         return $this->index();
     }
 
-    public function myListings() {
+    public function myListings()
+    {
 
-        $websites = Website::take(10)->where('user_id', auth()->user()->id)->with(['websiteBacklinkRates', 'categories'])->orderBy('id',  'desc')->get();
+        $websites = Website::take(10)->where('user_id', auth()->user()->id)->with(['websiteBacklinkRates', 'categories'])->orderBy('id', 'desc')->get();
         // Pass the websites to the view
         return view('websites.index', ['websites' => $websites]);
 
@@ -176,14 +177,14 @@ class WebsiteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id )
+    public function destroy($id)
     {
         try {
 
 
             $website = Website::where('id', $id)->where('user_id', auth()->user()->id)->first();
 
-            if(!$website){
+            if (!$website) {
                 abort(403);
             }
             // Detach categories if there's a many-to-many relationship
@@ -216,39 +217,54 @@ class WebsiteController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->input('search');
+
         $category = $request->input('category');
         $minPrice = $request->input('min_price');
         $maxPrice = $request->input('max_price');
         $minWordCount = $request->input('min_word_count');
         $maxWordCount = $request->input('max_word_count');
+        $sort = $request->input('sorting');
 
-        $websites = Website::query();
+        $query = Website::with(['categories', 'websiteBacklinkRates']);
 
-        if ($search) {
-            $websites->where('name', 'like', '%' . $search . '%');
+        if ($category) {
+            $query->whereHas('categories', function ($query) use ($category) {
+                $query->where('name', 'LIKE', '%' . $category . '%');
+            });
         }
 
+        if ($minPrice || $maxPrice || $minWordCount || $maxWordCount) {
+            $query->whereHas('websiteBacklinkRates', function ($query) use ($minPrice, $maxPrice, $minWordCount, $maxWordCount) {
+                if ($minPrice) {
+                    $query->where('price', '>=', $minPrice);
+                }
+                if ($maxPrice) {
+                    $query->where('price', '<=', $maxPrice);
+                }
+                if ($minWordCount) {
+                    $query->where('words_count', '>=', $minWordCount);
+                }
+                if ($maxWordCount) {
+                    $query->where('words_count', '<=', $maxWordCount);
+                }
+            });
+        }
 
-        $websites->with(['categories' => function ($query) use ($category, $minPrice, $maxPrice, $minWordCount, $maxWordCount) {
-            if ($category) {
-                $query->where('category', 'LIKE', '%' . $category . '%');
+        if ($sort) {
+            if ($sort === 'alphabetical_asc') {
+                $query->orderBy('url', 'asc');
+            } elseif ($sort === 'alphabetical_desc') {
+                $query->orderBy('url', 'desc');
+            } elseif ($sort === 'price_asc') {
+                $query->join('websiteBacklinkRates', 'websites.id', '=', 'websiteBacklinkRates.website_id')
+                    ->orderBy('websiteBacklinkRates.price', 'asc');
+            } elseif ($sort === 'price_desc') {
+                $query->join('websiteBacklinkRates', 'websites.id', '=', 'websiteBacklinkRates.website_id')
+                    ->orderBy('websiteBacklinkRates.price', 'desc');
             }
-            if ($minPrice) {
-                $query->where('price', '>=', $minPrice);
-            }
-            if ($maxPrice) {
-                $query->where('price', '<=', $maxPrice);
-            }
-            if ($minWordCount) {
-                $query->where('word_count', '>=', $minWordCount);
-            }
-            if ($maxWordCount) {
-                $query->where('word_count', '<=', $maxWordCount);
-            }
-        }]);
+        }
 
-        $websites = $websites->get();
+        $websites = $query->get();
 
         return view('websites.index', compact('websites'));
     }

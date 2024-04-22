@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Filter</h5>
-                    <form action="#" method="GET">
+                    <form action="" method="POST">
                         <!-- Max Price -->
                         <div class="form-group">
                             <label for="max_price">Max Price</label>
