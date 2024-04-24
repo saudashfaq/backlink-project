@@ -161,7 +161,8 @@
                             <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <div>
-                                    <a href="{{ route('websites.show', $website->id) }}" class="btn btn-info mr-2">View</a>
+                                    <a href="{{ route('websites.show', $website->id) }}"
+                                       class="btn btn-info mr-2">View</a>
                                     <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2">Edit</a>
                                 </div>
                                 <form method="POST" action="{{ route('websites.destroy', $website->id) }}">

@@ -8,38 +8,28 @@ use App\Models\Website;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\WebsiteBacklinkRate;
+use App\Repositories\WebsiteListingRepository;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 
 class WebsiteController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(WebsiteListingRepository $WebsiteListingRepository)
     {
-        // Fetch all websites from the database along with websiteBacklinkRates one cheepest record
-        $websites = Website::take(10)->with(['websiteBacklinkRates', 'categories'])->orderBy('id', 'desc')->get();
+        $userId = Auth::check() ? Auth::id() : null;
+        $websites = $WebsiteListingRepository->getWebsites($userId);
 
-        // Pass the websites to the view
         return view('websites.index', ['websites' => $websites]);
     }
 
-    public function allListings()
-    {
-        return $this->index();
-    }
 
-    public function myListings()
-    {
-
-        $websites = Website::take(10)->where('user_id', auth()->user()->id)->with(['websiteBacklinkRates', 'categories'])->orderBy('id', 'desc')->get();
-        // Pass the websites to the view
-        return view('websites.index', ['websites' => $websites]);
-
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -184,7 +174,7 @@ class WebsiteController extends Controller
 
             $website = Website::where('id', $id)->where('user_id', auth()->user()->id)->first();
 
-            if (!$website) {
+            if (empty($website)) {
                 abort(403);
             }
             // Detach categories if there's a many-to-many relationship
