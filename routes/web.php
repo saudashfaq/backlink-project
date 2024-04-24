@@ -47,6 +47,7 @@ Route::group(['prefix' => 'orders', 'name' => 'orders.'], function () {
     //Route::get('/create', [OrderController::class, 'create'])->name('orders.create');
 
 
+    // Route::get('/{id}/add_to_cart/{website_id}/{rate_id}', [OrderController::class, 'add_to_cart'])->name('orders.add_to_cart');
     Route::get('/{id}/show', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/{id}/update', [OrderController::class, 'update'])->name('orders.update');
@@ -61,3 +62,9 @@ Route::group(['prefix' => 'orders', 'name' => 'orders.'], function () {
 
 
 Route::get('/fetch-website-backlink-rates/{website_id}', [WebsiteController::class, 'getBacklinkRateByWebsiteId'])->name('website_backlink_rates');
+
+// routes/web.php
+
+Route::get('/splash', function () {
+    return view('splash');
+})->name('splash');

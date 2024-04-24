@@ -148,4 +148,13 @@ class OrderController extends Controller
         // Redirect to the index page or any other page as needed
         return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
+
+    // Example of redirecting to splash screen after adding to cart
+public function addToCart(Order $request)
+{
+    // Logic to add item to cart
+    // Redirect to splash screen
+    return redirect()->route('splash');
+}
+
 }

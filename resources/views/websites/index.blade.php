@@ -30,10 +30,10 @@
                         </button>
                     </form>
                 </div>
-                <div class="col-md-6 order-md-3 text-md-right">
+                {{-- <div class="col-md-6 order-md-3 text-md-right">
                     <a href="/" class="btn btn-dark">Add to cart</a>
                 </div>
-            </div>
+            </div> --}}
             
 
             
