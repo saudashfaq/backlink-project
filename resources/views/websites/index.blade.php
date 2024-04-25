@@ -5,7 +5,6 @@
 @section('content')
     <div class="container">
         <h1 class="my-4 text-center display-3" id="head">Websites List</h1>
-        
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 {{ Session::get('success') }}
@@ -17,7 +16,6 @@
                 {{ Session::get('error') }}
             </div>
         @endif
-
              <!-- Search Bar -->
              <div class="row">
                 <div class="col-md-6 order-md-2">
@@ -34,8 +32,6 @@
                     <a href="/" class="btn btn-dark">Add to cart</a>
                 </div>
             </div> --}}
-            
-
             
         </div>
         
@@ -114,9 +110,6 @@
                 </form>
             </div>
         </div>
-        
-        
-    
 
         @if(count($websites) > 0)
 <div class="row">
@@ -146,5 +139,5 @@
         @else
             <p>No websites found.</p>
         @endif
-    </div>
-@endsection
+        </div>
+        @endsection
