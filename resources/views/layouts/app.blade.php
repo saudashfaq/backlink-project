@@ -11,6 +11,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_index.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_show.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/splash_screen.css') }}">
     {{-- <script src="{{asset('assets/css/javascript/main.js')}}"></script> --}}
     
     <!-- Additional stylesheets or custom styles -->
@@ -21,7 +25,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top position-sticky">
         <!-- Navbar content -->
         <a class="navbar-brand" href="/">Your App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
