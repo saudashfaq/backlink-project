@@ -8,38 +8,28 @@ use App\Models\Website;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\WebsiteBacklinkRate;
+use App\Repositories\WebsiteListingRepository;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 
 class WebsiteController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(WebsiteListingRepository $WebsiteListingRepository)
     {
-        // Fetch all websites from the database along with websiteBacklinkRates one cheepest record
-        $websites = Website::take(10)->with(['websiteBacklinkRates', 'categories'])->orderBy('id',  'desc')->get();
+        $userId = Auth::check() ? Auth::id() : null;
+        $websites = $WebsiteListingRepository->getWebsites($userId);
 
-        // Pass the websites to the view
         return view('websites.index', ['websites' => $websites]);
     }
 
-    public function allListings() 
-    {
-        return $this->index();
-    }
 
-    public function myListings() {
-
-        $websites = Website::take(10)->where('user_id', auth()->user()->id)->with(['websiteBacklinkRates', 'categories'])->orderBy('id',  'desc')->get();
-
-        // Pass the websites to the view
-        return view('websites.index', ['websites' => $websites]);
-        
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +47,7 @@ class WebsiteController extends Controller
     {
         try {
 
-            // Create a new website instance
+            // Create a new website instanc
             $website = new Website();
 
             // Fill the website instance with request data
@@ -167,7 +157,7 @@ class WebsiteController extends Controller
 
             Session::flash('success', 'Website has been successfully edited.');
         } catch (Exception $e) {
-            Log::error("An exception occured when updating a website: " . $e->getMessage());
+            Log::error("An exception occurred when updating a website: " . $e->getMessage());
             Session::flash('error', 'There was an issue saving your changes. Please try again later.');
         }
 
@@ -177,14 +167,14 @@ class WebsiteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id )
+    public function destroy($id)
     {
         try {
 
 
             $website = Website::where('id', $id)->where('user_id', auth()->user()->id)->first();
 
-            if(!$website){
+            if (empty($website)) {
                 abort(403);
             }
             // Detach categories if there's a many-to-many relationship
@@ -198,7 +188,7 @@ class WebsiteController extends Controller
             Session::flash('success', 'Website deleted successfully');
 
         } catch (Exception $e) {
-            
+
             Log::error("An error occurred deleting a website: " . $e->getMessage());
             dd($e);
             Session::flash('error', 'Error deleting website.  Please try again later.');
@@ -209,8 +199,64 @@ class WebsiteController extends Controller
     }
 
 
-    public function getBacklinkRateByWebsiteId($website_id) 
+    public function getBacklinkRateByWebsiteId($website_id)
     {
         return WebsiteBacklinkRate::where('website_id', $website_id)->get();
     }
+
+
+    public function search(Request $request)
+    {
+
+        $category = $request->input('category');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $minWordCount = $request->input('min_word_count');
+        $maxWordCount = $request->input('max_word_count');
+        $sort = $request->input('sorting');
+
+        $query = Website::with(['categories', 'websiteBacklinkRates']);
+
+        if ($category) {
+            $query->whereHas('categories', function ($query) use ($category) {
+                $query->where('name', 'LIKE', '%' . $category . '%');
+            });
+        }
+
+        if ($minPrice || $maxPrice || $minWordCount || $maxWordCount) {
+            $query->whereHas('websiteBacklinkRates', function ($query) use ($minPrice, $maxPrice, $minWordCount, $maxWordCount) {
+                if ($minPrice) {
+                    $query->where('price', '>=', $minPrice);
+                }
+                if ($maxPrice) {
+                    $query->where('price', '<=', $maxPrice);
+                }
+                if ($minWordCount) {
+                    $query->where('words_count', '>=', $minWordCount);
+                }
+                if ($maxWordCount) {
+                    $query->where('words_count', '<=', $maxWordCount);
+                }
+            });
+        }
+
+        if ($sort) {
+            if ($sort === 'alphabetical_asc') {
+                $query->orderBy('url', 'asc');
+            } elseif ($sort === 'alphabetical_desc') {
+                $query->orderBy('url', 'desc');
+            } elseif ($sort === 'price_asc') {
+                $query->join('websiteBacklinkRates', 'websites.id', '=', 'websiteBacklinkRates.website_id')
+                    ->orderBy('websiteBacklinkRates.price', 'asc');
+            } elseif ($sort === 'price_desc') {
+                $query->join('websiteBacklinkRates', 'websites.id', '=', 'websiteBacklinkRates.website_id')
+                    ->orderBy('websiteBacklinkRates.price', 'desc');
+            }
+        }
+
+        $websites = $query->get();
+
+        return view('websites.index', compact('websites'));
+    }
+
 }
