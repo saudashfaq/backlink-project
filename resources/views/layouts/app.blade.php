@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/website_app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_show.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/splash_screen.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/provide-details.css') }}">
     {{-- <script src="{{asset('assets/css/javascript/main.js')}}"></script> --}}
     
     <!-- Additional stylesheets or custom styles -->
