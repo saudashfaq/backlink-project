@@ -1,0 +1,67 @@
+.content {
+    padding-top: 80px; /* Adjust the value based on your navbar height */
+}
+
+.navbar, .sidebar {
+    background-color: #dfe0e1;
+    z-index: 1000;
+  }
+
+  .sidebar {
+    background-color: #dfe0e1;
+  }
+
+  .card-body{
+    background-color: #dfe0e1;
+  }
+
+  #cards-body{
+    background-color: whitesmoke;
+  }
+
+  #show-cat{
+    background-color: #e9ecef;
+  }
+
+  #show-pac{
+    background-color: #d6d8db;
+  }
+
+  .rate{
+    background-color: #f0f8ff;
+  }
+   
+  .navbar-nav .nav-link {
+    color: #333; /* Link text color */
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1.3em;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+
+  /* Link Hover Effect */
+  .navbar-nav .nav-link:hover, #filter {
+    color: #7c7d7d; /* Link text color on hover */
+  }
+
+  /* Link Animation */
+  .navbar-nav .nav-link {
+    position: relative;
+    overflow: hidden;
+  }
+  .navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c6c7c8;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .navbar-nav .nav-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }

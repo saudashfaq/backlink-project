@@ -1,0 +1,26 @@
+/* for splash screen */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .splash {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .splash img {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    margin-bottom: 20px;
+  }
+  
+  .splash h1 {
+    font-size: 24px;
+    color: #333;
+  }

@@ -11,6 +11,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_index.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_show.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/splash_screen.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/provide-details.css') }}">
+    {{-- <script src="{{asset('assets/css/javascript/main.js')}}"></script> --}}
+    
     <!-- Additional stylesheets or custom styles -->
 
     <!-- Optional: Font Awesome for icons -->
@@ -19,14 +26,13 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top position-sticky">
         <!-- Navbar content -->
         <a class="navbar-brand" href="/">Your App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-
             {{-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -52,7 +58,6 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li> --}}
-
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
                 <a href="" class="btn btn-success mr-2">Buyer</a>
@@ -64,26 +69,83 @@
 
     <div class="container-fluid">
         <div class="row">
-          <!-- Vertical Navbar(sidebar) -->
-          <nav class="col-md-2 col-lg-2 d-md-block sidebar">
-            <div class="position-sticky fixed-top">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/websites">Websites</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/orders">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">View Orders as Sellers</a>
-                    </li>
-                </ul>
-            </div>
-          </nav>
-        </div>
+
+            <!-- Vertical Navbar(sidebar) -->
+<nav class="col-md-2 col-lg-2 d-md-block sidebar">
+    <div class="position-sticky fixed-top">
+        <!-- Dropdown Menu -->
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-cog"></i> My assets
+                </a>
+                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                    <!-- Create New Website Button -->
+                    <a class="dropdown-item create-website-btn" href="{{ route('websites.create') }}">Create New Website</a>
+                    <!-- Other links with bullet point icons -->
+                    <a class="dropdown-item" href="#">Verified publishers</a>
+                    <a class="dropdown-item" href="#">All publishers</a>
+                    <a class="dropdown-item" href="#">Faverite publishers</a>
+                </div>
+            </li>
+            <!-- Home Link -->
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <!-- Other Links -->
+            <li class="nav-item">
+                <a class="nav-link" href="/websites">
+                    <i class="fas fa-globe"></i> Websites
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/orders">
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">
+                    <i class="fas fa-user"></i> View Orders as Sellers
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-tasks"></i> Tasks
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-shopping-cart"></i> Content Purchase
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-list"></i> Lists
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-link"></i> Recommended sites
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-wallet"></i> Balance
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-money-bill-wave"></i> Earn
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
     <div class="container mt-4">
         @yield('content')
     </div>
