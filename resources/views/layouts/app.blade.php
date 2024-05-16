@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/website_index.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_show.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_edit.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/splash_screen.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/provide-details.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/add-to-cart.css') }}">
     {{-- <script src="{{asset('assets/css/javascript/main.js')}}"></script> --}}
     
     <!-- Additional stylesheets or custom styles -->
@@ -58,8 +60,12 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li> --}}
+              
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
+                <a class="btn btn-outline-success my-2 my-sm-0 mr-2" href="{{ route('cart.add-to-cart') }}">
+                    <i class="fas fa-shopping-cart mr-1"></i>Cart
+                  </a>
                 <a href="" class="btn btn-success mr-2">Buyer</a>
                 <a href="" class="btn btn-dark">Seller</a>
             </div>

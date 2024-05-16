@@ -43,6 +43,7 @@ Route::group(['prefix' => 'orders', 'name' => 'orders.'], function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
 
     Route::get('/view-orders-as-seller', [OrderController::class, 'viewOrdersAsSeller'])->name('orders.view_orders_as_seller');
+    Route::get('/add-to-cart', [OrderController::class, 'addtoCart'])->name('cart.add-to-cart');
 
     //Route::get('/create', [OrderController::class, 'create'])->name('orders.create');
 
@@ -65,6 +66,6 @@ Route::get('/fetch-website-backlink-rates/{website_id}', [WebsiteController::cla
 
 // routes/web.php
 
-Route::get('/splash', function () {
-    return view('splash');
-})->name('splash');
+Route::get('/cart', function(){
+    return view('layouts.cart.view-cart');
+});

@@ -1,0 +1,23 @@
+
+    .edit-website-form {
+        margin-top: 20px;
+    }
+
+    .rate {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .rate label {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .rate input[type="text"] {
+        margin-bottom: 10px;
+    }
+
+    .rate .btn {
+        margin-top: 10px;
+    }

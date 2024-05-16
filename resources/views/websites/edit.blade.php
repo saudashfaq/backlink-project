@@ -13,7 +13,7 @@
     @endif
 
     <!-- Form for editing website details -->
-    <form action="{{ route('websites.update', ['id' => $website->id]) }}" method="POST">
+    <form action="{{ route('websites.update', ['id' => $website->id]) }}" method="POST" class="edit-website-form">
         @csrf
         @method('PUT')
 
@@ -68,7 +68,7 @@
             <label for="backlink_rates">Packages</label>
             <div id="backlink_rates">
                 @foreach($website->websitebacklinkrates as $index => $rate)
-                <div class="rate mb-3 p-3">
+                <div class="rate mb-3 p-3 border rounded">
                     <input type="hidden" name="backlink_rates[{{ $index }}][id]" value="{{ $rate->id }}">
                     <label>Words Count:</label>
                     <input type="text" name="backlink_rates[{{ $index }}][words_count]" value="{{ $rate->words_count }}" class="form-control">
@@ -85,7 +85,7 @@
 
 
         <!-- Categories with checkbox -->
-         <div class="form-group">
+        <div class="form-group">
             <label for="categories">Categories</label>
             <select name="categories[]" id="categories" class="form-control" multiple>
                 @foreach($categories as $category)
@@ -99,10 +99,7 @@
         <button type="submit" class="btn btn-primary">Save</button>
         <a href="{{ route('websites.index') }}" class="btn btn-danger">Cancel</a>
     </form>
-
-
 </div>
-
 @endsection
 
 @section('additional_scripts')
@@ -113,7 +110,7 @@
         $(document).on('click', '.add-rate', function() {
             var index = $('#backlink_rates .rate').length;
             var newRate = `
-                <div class="rate mb-3 p-3" style="background-color: #f0fff0;">
+                <div class="rate mb-3 p-3 border rounded" style="background-color: #f0fff0;">
                     <input type="hidden" name="backlink_rates[${index}][id]" value="">
                     <label>Words Count:</label>
                     <input type="text" name="backlink_rates[${index}][words_count]" value="350" class="form-control">
@@ -132,7 +129,5 @@
         });
 
     });
-
-
 </script>
 @endsection
