@@ -154,7 +154,7 @@ public function addToCart(Order $request)
 {
     // Logic to add item to cart
     // Redirect to splash screen
-    return redirect()->route('splash');
+    // return redirect()->route('splash');
 }
 
 }

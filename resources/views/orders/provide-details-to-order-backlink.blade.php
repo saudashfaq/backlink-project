@@ -66,7 +66,7 @@
             <!-- Add more form fields as needed -->
 
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Buy Now</button>
+                <button type="submit" class="btn btn-primary">Check-Out</button>
             </div>
         </form>
     </div>
