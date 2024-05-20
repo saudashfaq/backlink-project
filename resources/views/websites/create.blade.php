@@ -1,4 +1,3 @@
-<!-- resources/views/websites/create.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Add New Website')
@@ -12,13 +11,13 @@
 </div>
 @endif
 @if(session('failure'))
-<div class="alert alert-success">
+<div class="alert alert-danger">
     {{ session('failure') }}
 </div>
 @endif
 
 <!-- Form for creating a new website -->
-<form action="{{ route('websites.store') }}" method="POST">
+<form action="{{ route('websites.store') }}" method="POST" class="website-form">
     @csrf
 
     <!-- Website URL input -->
@@ -30,7 +29,6 @@
         @enderror
     </div>
 
-
     <!-- Website details input -->
     <div class="form-group">
         <label for="details">Details</label>
@@ -40,82 +38,50 @@
         @enderror
     </div>
 
-    <!-- Website status input -->
-
-    {{--
-            <div class="form-group">
-                <label for="website_status">Website Status</label>
-                <select name="website_status" id="website_status" class="form-control">
-                    <option value="In Review">In Review</option>
-                    <option value="Rejected">Rejected</option>
-                    <option value="Approved">Approved</option>
-                </select>
-                @error('website_status')
-                    <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    --}}
-
-    @php echo  $is_visible ?? 'none' @endphp
     <!-- is_visible input -->
     <div class="form-group">
         <label for="is_visible">Visibility</label>
         <div class="form-check">
-            <input type="checkbox" name="is_visible" id="is_visible" class="form-check-input" value=""  {{ old('is_visible', 1) == 1 ? 'checked' : '' }}>
+            <input type="checkbox" name="is_visible" id="is_visible" class="form-check-input" value="1" {{ old('is_visible', 1) == 1 ? 'checked' : '' }}>
             <label class="form-check-label" for="is_visible">Visible</label>
         </div>
-        <!-- Display validation error for is_visible -->
         @error('is_visible')
         <div class="text-danger">{{ $message }}</div>
         @enderror
     </div>
 
-
     <!-- Backlink rates -->
     <div class="form-group" id="backlink_rates_container">
         <label for="backlink_rates">Packages</label>
         <div id="backlink_rates">
-
-            {{-- If there are already some backlinks, display them. Otherwise, create a new one --}} 
-            
-    
             @php print_r(old("backlink_rates")) @endphp
-            
-                @foreach( old('backlink_rates', [0]) as $index => $backlink_rate)
+            @foreach( old('backlink_rates', [0]) as $index => $backlink_rate)
+            <div class="rate">
+                <input type="hidden" name="backlink_rates[{{$index}}][id]" value="">
+                <label>Words Count:</label>
+                <input type="text" name="backlink_rates[{{$index}}][words_count]" value="{{ $backlink_rate['words_count'] ?? 350 }}">
+                @error('backlink_rates.{{$index}}.words_count')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
 
-                    <div class="rate">
-                        <input type="hidden" name="backlink_rates[{{$index}}][id]" value="">
-                        <label>Words Count:</label>
-                        <input type="text" name="backlink_rates[{{$index}}][words_count]" value="{{ $backlink_rate['words_count'] ?? 350 }}">
-                        @error('backlink_rates.{{$index}}.words_count')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                <label>Price:</label>
+                <input type="text" name="backlink_rates[{{$index}}][price]" value="{{ $backlink_rate['price'] ?? 5 }}">
+                @error('backlink_rates.{{$index}}.price')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
 
-                        <label>Price:</label>
-                        <input type="text" name="backlink_rates[{{$index}}][price]" value="{{ $backlink_rate['price'] ?? 5 }}">
-                        @error('backlink_rates.{{$index}}.price')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                <label>Max Number of Links:</label>
+                <input type="text" name="backlink_rates[{{$index}}][max_number_of_links]" value="{{ $backlink_rate['max_number_of_links'] ?? 3 }}">
+                @error('backlink_rates.$index.max_number_of_links')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
 
-                        <label>Max Number of Links:</label>
-                        <input type="text" name="backlink_rates[{{$index}}][max_number_of_links]" value="{{ $backlink_rate['max_number_of_links'] ?? 3}}">
-                        @error('backlink_rates.$index.max_number_of_links')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-
-                        <button type="button" class="btn btn-danger btn-sm remove-rate">Remove</button>
-                    </div>
-                    
-                @endforeach
-
-            
-
+                <button type="button" class="btn btn-danger btn-sm remove-rate">Remove</button>
+            </div>
+            @endforeach
         </div>
-        
         <button type="button" class="btn btn-success btn-sm add-rate">Add Rate</button>
-    
     </div>
-
 
     <!-- Categories with checkbox -->
     <div class="form-group">
@@ -130,12 +96,10 @@
         </select>
     </div>
 
-
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary">Save</button>
     <a href="{{ route('websites.index') }}" class="btn btn-danger">Cancel</a>
 </form>
-
 
 @endsection
 

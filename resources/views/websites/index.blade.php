@@ -3,8 +3,13 @@
 @section('title', 'Websites List')
 
 @section('content')
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <div class="container">
         <h1 class="my-4 text-center display-3" id="head">Websites List</h1>
+        
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 {{ Session::get('success') }}
@@ -16,39 +21,34 @@
                 {{ Session::get('error') }}
             </div>
         @endif
-             <!-- Search Bar -->
-             <div class="row">
-                <div class="col-md-6 order-md-2">
-                    <form action="#" method="GET" class="form-inline">
-                        <div class="form-group mr-2">
-                            <input type="text" class="form-control" name="search" placeholder="Search...">
-                        </div>
-                        <button type="submit" class="btn btn-secondary">Search
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </form>
-                </div>
-                {{-- <div class="col-md-6 order-md-3 text-md-right">
-                    <a href="/" class="btn btn-dark">Add to cart</a>
-                </div>
-            </div> --}}
-            
+        
+        <!-- Search Bar -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-6">
+                <form action="#" method="GET" class="form-inline">
+                    <div class="form-group mr-2 mb-2 mb-md-0">
+                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Search
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
         </div>
         
+        <!-- Filter Section -->
         <div class="container">
-            <div class="row justify-content-center">
-                <!-- Filter Section -->
+            <div class="row justify-content-center mb-4">
                 <div class="col-md-12">
-                    <h1 class="text-center" id="filter">Filter</h1>
+                    <h2 class="text-center" id="filter">Filter</h2>
                 </div>
-                <!-- Single Form Tag -->
-                <form action="#" method="GET" class="col-md-8">
+                
+                <form action="#" method="GET" class="col-md-10">
                     <div class="row">
                         <!-- First Filter Column -->
-                        <div class="col-md-6">
+                        <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"></h5>
                                     <!-- Max Price -->
                                     <div class="form-group">
                                         <label for="max_price">Max Price</label>
@@ -64,8 +64,8 @@
                                         <label for="category">Category</label>
                                         <select class="form-control" id="category" name="category">
                                             <option value="">Select a category</option>
-                                            <option value="busines">Busines</option>
-                                            <option value="web-development">Web-development</option>
+                                            <option value="busines">Business</option>
+                                            <option value="web-development">Web Development</option>
                                             <option value="books">Books</option>
                                             <option value="design">Design</option>
                                         </select>
@@ -74,10 +74,9 @@
                             </div>
                         </div>
                         <!-- Second Filter Column -->
-                        <div class="col-md-6">
+                        <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"></h5>
                                     <!-- Sorting Options -->
                                     <div class="form-group">
                                         <label for="sorting">Sort By</label>
@@ -112,32 +111,40 @@
         </div>
 
         @if(count($websites) > 0)
-<div class="row">
-    @foreach($websites as $website)
-    <div class="col-md-6 mb-4 mt-2">
-        <div class="card website-card">
-            <div class="card-body">
-                <h5 class="card-title">{{ $website->url }}</h5>
-                <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
-                <p class="card-text mb-1">Status: {{ $website->website_status }}</p>
-                <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
-                <div class="button-group mt-3">
-                    <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary mr-2">View</a>
-                    <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2">Edit</a>
-                    <a href="/" class="btn btn-dark mr-2">Purchase</a>
-                    <form method="POST" action="{{ route('websites.destroy', $website->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
+            <div class="row">
+                @foreach($websites as $website)
+                    <div class="col-lg-6 mb-4">
+                        <div class="card website-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $website->url }}</h5>
+                                <p class="card-text mb-1">Details: {{ $website->details ?? 'N/A' }}</p>
+                                <p class="card-text mb-1">Status: {{ $website->website_status }}</p>
+                                <p class="card-text mb-1">Enabled: {{ $website->is_visible ? "Yes" : "No" }}</p>
+                                <div class="button-group mt-3">
+                                    <a href="{{ route('websites.show', $website->id) }}" class="btn btn-primary mr-2 mb-2">View</a>
+                                    <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-warning mr-2 mb-2">Edit</a>
+                                    <a href="/" class="btn btn-dark mr-2 mb-2">Purchase</a>
+                                    <form method="POST" action="{{ route('websites.destroy', $website->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger mb-2">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </div>
-    </div>
-    @endforeach
-</div>
         @else
             <p>No websites found.</p>
         @endif
-        </div>
-        @endsection
+    </div>
+    <script>
+        // Script to toggle the sidebar
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+@endsection

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_index.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/website_create.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_show.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/website_edit.css') }}">
@@ -63,7 +64,7 @@
               
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
-                <a class="btn btn-outline-success my-2 my-sm-0 mr-2" href="{{ route('cart.add-to-cart') }}">
+                <a class="btn btn-outline-success my-2 my-sm-0 mr-2" href="">
                     <i class="fas fa-shopping-cart mr-1"></i>Cart
                   </a>
                 <a href="" class="btn btn-success mr-2">Buyer</a>
@@ -76,81 +77,93 @@
     <div class="container-fluid">
         <div class="row">
 
-            <!-- Vertical Navbar(sidebar) -->
-<nav class="col-md-2 col-lg-2 d-md-block sidebar">
-    <div class="position-sticky fixed-top">
-        <!-- Dropdown Menu -->
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-cog"></i> My assets
-                </a>
-                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                    <!-- Create New Website Button -->
-                    <a class="dropdown-item create-website-btn" href="{{ route('websites.create') }}">Create New Website</a>
-                    <!-- Other links with bullet point icons -->
-                    <a class="dropdown-item" href="#">Verified publishers</a>
-                    <a class="dropdown-item" href="#">All publishers</a>
-                    <a class="dropdown-item" href="#">Faverite publishers</a>
-                </div>
-            </li>
-            <!-- Home Link -->
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-home"></i> Home
-                </a>
-            </li>
-            <!-- Other Links -->
-            <li class="nav-item">
-                <a class="nav-link" href="/websites">
-                    <i class="fas fa-globe"></i> Websites
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/orders">
-                    <i class="fas fa-shopping-cart"></i> Orders
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">
-                    <i class="fas fa-user"></i> View Orders as Sellers
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-tasks"></i> Tasks
-                </a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-shopping-cart"></i> Content Purchase
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-list"></i> Lists
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-link"></i> Recommended sites
-                </a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-wallet"></i> Balance
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-money-bill-wave"></i> Earn
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+            <!-- Toggle button for sidebar -->
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Main content and sidebar -->
+            <div class="d-flex flex-column flex-md-row">
+
+                <!-- Sidebar -->
+                <nav id="sidebar" class="col-md-2 col-lg-2 d-md-block collapse">
+                    <!-- Sidebar content -->
+                    <div class="position-sticky fixed-top">
+                        <!-- Dropdown Menu -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-cog"></i> My assets
+                                </a>
+                                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                                    <!-- Create New Website Button -->
+                                    <a class="dropdown-item create-website-btn" href="{{ route('websites.create') }}">Create New Website</a>
+                                    <!-- Other links with bullet point icons -->
+                                    <a class="dropdown-item" href="#">Verified publishers</a>
+                                    <a class="dropdown-item" href="#">All publishers</a>
+                                    <a class="dropdown-item" href="#">Favorite publishers</a>
+                                </div>
+                            </li>
+                            <!-- Home Link -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-home"></i> Home
+                                </a>
+                            </li>
+                            <!-- Other Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/websites">
+                                    <i class="fas fa-globe"></i> Websites
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/orders">
+                                    <i class="fas fa-shopping-cart"></i> Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">
+                                    <i class="fas fa-user"></i> View Orders as Sellers
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-tasks"></i> Tasks
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-shopping-cart"></i> Content Purchase
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-list"></i> Lists
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-link"></i> Recommended sites
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-wallet"></i> Balance
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-money-bill-wave"></i> Earn
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Main content -->
+                <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
 
     <div class="container mt-4">
         @yield('content')
@@ -163,6 +176,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Additional scripts -->
     @yield('additional_scripts')
+
+    <script>
+        // Script to toggle sidebar
+        $(document).ready(function() {
+            // Toggle sidebar on smaller screens
+            $('.navbar-toggler').click(function() {
+                $('#sidebar').toggleClass('show');
+            });
+        });
+    </script>
+    
 </body>
 
 </html>
