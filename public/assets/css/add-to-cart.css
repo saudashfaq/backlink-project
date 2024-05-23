@@ -23,3 +23,105 @@
         height: 5px; /* Adjust the height as needed */
         font-size: 10px;
     }
+
+    .item-checkbox{
+    position: relative; /* Set position to relative to enable positioning */
+    bottom: 60px; 
+    /* left: 20px; */
+    }
+    .form-outline input[type=number] {
+        width: 50%; /* Adjust width as needed */
+    }
+    
+    /* Adjust margin between input and button */
+    .stepUp {
+        transform: translate(-110px,0); /* Adjust margin as needed */
+    }
+
+    @media (max-width: 1200px) {
+        .form-outline input[type=number] {
+            width: 70%; /* Adjust width for smaller screens */
+        }
+        .stepUp {
+            transform: translate(-23px,0); /* Adjust margin as needed */
+        }
+    }
+    
+    /* Media query for smaller screens */
+    @media (max-width: 992px) {
+        .form-outline input[type=number] {
+            width: 70%; /* Adjust width for smaller screens */
+        }
+        .stepUp {
+            transform: translate(-15px,0); /* Adjust margin as needed */
+        }
+    }
+    
+    /* Media query for medium-sized screens */
+    @media (max-width: 768px) {
+        .form-outline input[type=number] {
+            width: 60%; /* Adjust width for medium-sized screens */
+        }
+        .stepUp {
+            transform: translate(-30px,0); /* Adjust margin as needed */
+        }
+    }
+    
+    /* Media query for smaller devices */
+    @media (max-width: 576px) {
+        .form-outline input[type=number] {
+            width: 70%; /* Adjust width for smaller devices */
+        }
+        .stepUp {
+            transform: translate(-25px,0); /* Adjust margin as needed */
+        }
+    }
+    
+    /* Media query for extra small devices */
+    @media (max-width: 360px) {
+        .form-outline input[type=number] {
+            width: 70%; /* Adjust width for extra small devices */
+        }
+        .stepUp {
+            transform: translate(-18px,0); /* Adjust margin as needed */
+        }
+    }
+/* Price text */
+
+    .text-start {
+        transform: translate(-110px,0); /* Adjust margin as needed */
+    }
+
+    @media (max-width: 1200px) {
+        .text-start {
+            transform: translate(-23px,0); /* Adjust margin as needed */
+        }
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 992px) {
+        .text-start {
+            transform: translate(-15px,0); /* Adjust margin as needed */
+        }
+    }
+
+    /* Media query for medium-sized screens */
+    @media (max-width: 768px) {
+        .text-start {
+            transform: translate(-30px,0); /* Adjust margin as needed */
+        }
+    }
+
+    /* Media query for smaller devices */
+    @media (max-width: 576px) {
+        .text-start {
+            transform: translate(-24px,0); /* Adjust margin as needed */
+        }
+    }
+
+    /* Media query for extra small devices */
+    @media (max-width: 360px) {
+        .text-start {
+            transform: translate(-18px,0); /* Adjust margin as needed */
+        }
+    }

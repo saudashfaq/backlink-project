@@ -19,8 +19,9 @@
                             <label class="form-check-label" for="selectAll">Select All</label>
                         </div>
 
-                        <!-- Item 1 -->
+                        <!-- Table for all items -->
                         <table>
+                            <!-- Item 1 -->
                             <tr>
                                 <td>
                                     <!-- Item checkbox -->
@@ -30,7 +31,7 @@
                                 </td>
                                 <td>
                                     <!-- Image -->
-                                    <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                    {{-- <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
                                             class="w-50" alt="Blue Jeans Jacket" />
@@ -38,7 +39,7 @@
                                             <div class="mask"
                                                 style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                     <!-- Image -->
                                 </td>
                                 <td>
@@ -64,7 +65,7 @@
                                         <tr>
                                             <td>
                                                 <button data-mdb-button-init data-mdb-ripple-init
-                                                    class="btn btn-primary px-3 me-2 mt-4"
+                                                    class="stepDown btn btn-primary px-3 me-2 mt-4"
                                                     onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown()">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
@@ -73,12 +74,12 @@
                                                 <div data-mdb-input-init class="form-outline">
                                                   <label class="form-label" for="form1">Quantity</label>
                                                     <input id="form1" min="1" name="quantity" value="1" type="number"
-                                                        class="form-control" />
+                                                        class="form-control"/>
                                                 </div>
                                             </td>
                                             <td>
                                                 <button data-mdb-button-init data-mdb-ripple-init
-                                                    class="btn btn-primary px-3 ms-2 mt-4"
+                                                    class="stepUp btn btn-primary px-3 ms-2 mt-4"
                                                     onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp()">
                                                     <i class="fas fa-plus"></i>
                                                 </button>
@@ -95,13 +96,12 @@
                                     <!-- Price -->
                                 </td>
                             </tr>
-                        </table>
-                        <!-- Item 1 -->
+                            <!-- Item 1 -->
+                            <tr>
+                                <td colspan="5"><hr class="my-4"></td>
+                            </tr>
 
-                        <hr class="my-4" />
-
-                        <!-- Item 2 -->
-                        <table>
+                            <!-- Item 2 -->
                             <tr>
                                 <td>
                                     <!-- Item checkbox -->
@@ -111,7 +111,7 @@
                                 </td>
                                 <td>
                                     <!-- Image -->
-                                    <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                    {{-- <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
                                             class="w-50" />
@@ -119,7 +119,7 @@
                                             <div class="mask"
                                                 style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                     <!-- Image -->
                                 </td>
                                 <td>
@@ -145,7 +145,7 @@
                                         <tr>
                                             <td>
                                                 <button data-mdb-button-init data-mdb-ripple-init
-                                                    class="btn btn-primary px-3 me-2 mt-4"
+                                                    class="stepDown btn btn-primary px-3 me-2 mt-4"
                                                     onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown()">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
@@ -159,7 +159,7 @@
                                             </td>
                                             <td>
                                                 <button data-mdb-button-init data-mdb-ripple-init
-                                                    class="btn btn-primary px-3 ms-2 mt-4"
+                                                    class="stepUp btn btn-primary px-3 ms-2 mt-4"
                                                     onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp()">
                                                     <i class="fas fa-plus"></i>
                                                 </button>
@@ -176,11 +176,12 @@
                                     <!-- Price -->
                                 </td>
                             </tr>
-                        </table>
-                        <hr class="my-4" />
+                            <!-- Item 2 -->
+                            <tr>
+                                <td colspan="5"><hr class="my-4"></td>
+                            </tr>
 
-                        <!-- Item 3 -->
-                        <table>
+                            <!-- Item 3 -->
                             <tr>
                                 <td>
                                     <!-- Item checkbox -->
@@ -192,13 +193,13 @@
                                     <!-- Image -->
                                     <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                         data-mdb-ripple-color="light">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
+                                        {{-- <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
                                             class="w-50" />
                                         <a href="#!">
                                             <div class="mask"
                                                 style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                     <!-- Image -->
                                 </td>
                                 <td>
@@ -224,7 +225,7 @@
                                         <tr>
                                             <td>
                                                 <button data-mdb-button-init data-mdb-ripple-init
-                                                    class="btn btn-primary px-3 me-2 mt-4"
+                                                    class="stepDown btn btn-primary px-3 me-2 mt-4"
                                                     onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepDown()">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
@@ -238,7 +239,7 @@
                                             </td>
                                             <td>
                                                 <button data-mdb-button-init data-mdb-ripple-init
-                                                    class="btn btn-primary px-3 ms-2 mt-4"
+                                                    class="stepUp btn btn-primary px-3 ms-2 mt-4"
                                                     onclick="this.parentNode.parentNode.querySelector('input[type=number]').stepUp()">
                                                     <i class="fas fa-plus"></i>
                                                 </button>
@@ -255,16 +256,14 @@
                                     <!-- Price -->
                                 </td>
                             </tr>
+                            <!-- Item 3 -->
+                            <tr>
+                                <td colspan="5"><hr class="my-4"></td>
+                            </tr>
                         </table>
-                        <!-- Item 3 -->
+                        <!-- Table for all items -->
                     </div>
                 </div>
-                {{-- <div class="card mb-4">
-                    <div class="card-body">
-                        <p><strong>Expected shipping delivery</strong></p>
-                        <p class="mb-0">12.10.2020 - 14.10.2020</p>
-                    </div>
-                </div> --}}
                 <div class="card mb-4 mb-lg-0">
                     <div class="card-body">
                         <p><strong>We accept</strong></p>
