@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Website;
 use App\Models\WebsiteBacklinkRate;
 use Illuminate\Support\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -51,7 +53,7 @@ class OrderController extends Controller
     {
         $users = User::select('id', 'email')->whereHas('websites')->get();
         $websites = Website::select('id', 'url')->with('websiteBacklinkRates')->whereHas('websiteBacklinkRates')->get();
-
+        // dd($websites);
         return view('orders.create', ['users' => $users, 'websites' => $websites]);
     }
 
@@ -121,8 +123,9 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order created successfully.');
     }
 
-    public function edit(Order $order)
+    public function edit(Order $order, $id)
     {
+        $order = Order::findOrFail($id);
         return view('orders.edit', compact('order'));
     }
 
@@ -150,11 +153,40 @@ class OrderController extends Controller
     }
 
     // Example of redirecting to splash screen after adding to cart
-public function addToCart(Order $request)
-{
-    // Logic to add item to cart
-    // Redirect to splash screen
-    // return redirect()->route('splash');
-}
+    public function add_to_cart($id, $website_id, $rate_id)
+    {
+        // Retrieve the authenticated user (if needed)
+        // $user = auth()->user();
+        $website = Website::findOrFail($website_id);
+        $rate = WebsiteBacklinkRate::where('id', $rate_id)->where('website_id', $website_id)->firstOrFail();
+        $cartItem = Cart::instance('cart')->content()->where('id', $rate_id)->first();
 
+        if ($cartItem) {
+            return redirect()->route('websites.index')->with('info', 'Item is already in your cart.');
+        } else {
+            Cart::instance('cart')->add($rate->id, $website->url, 1, $rate->price)->associate('App\Models\WebsiteBacklinkRate');
+            return redirect()->back()->with('success', 'Item added to cart successfully.');
+        }
+    }
+
+    public function viewCart()
+    {
+        $cartItems = Cart::instance('cart')->content();
+        return view('layouts.cart.add-to-cart', ['cartItems' => $cartItems]);
+    }
+
+    public function updateCart(Request $request)
+    {
+        $rowId = $request->rowId;
+        $quantity = $request->quantity;
+        Cart::instance('cart')->update($rowId, $quantity);
+        return redirect()->route('view.cart')->with('success', 'Cart updated successfully.');
+    }
+
+    public function deleteItem(Request $request)
+    {
+        $rowId = $request->rowId;
+        Cart::instance('cart')->remove($rowId);
+        return redirect()->route('view.cart')->with('success', 'Item removed from the cart');
+    }
 }

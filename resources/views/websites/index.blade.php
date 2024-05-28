@@ -43,7 +43,7 @@
                     <h2 class="text-center" id="filter">Filter</h2>
                 </div>
                 
-                <form action="#" method="GET" class="col-md-10">
+                <form action="{{route('websites.search')}}" method="GET" class="col-md-10">
                     <div class="row">
                         <!-- First Filter Column -->
                         <div class="col-lg-6 mb-4">
