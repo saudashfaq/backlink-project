@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <?php $cartItemCount = Cart::instance('cart')->content()->count(); ?>
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top position-sticky">
         <!-- Navbar content -->
@@ -36,40 +37,18 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            {{-- <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/websites">Websites</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/orders">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('orders.view_orders_as_seller')}}">View Orders as Sellers</a>
-                </li>
-            </ul> --}}
-            {{-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li> --}}
-              
             <!-- Toggle buttons -->
             <div class="navbar-nav ml-auto">
-                <a class="btn btn-outline-success my-2 my-sm-0 mr-2" href="">
+                <a href="{{route('view.cart')}}" class="btn btn-outline-success my-2 my-sm-0 mr-2">
                     <i class="fas fa-shopping-cart mr-1"></i>Cart
-                  </a>
+                    <span id="cart-item-count" class="badge badge-green" style="display: {{ $cartItemCount > 0 ? 'inline' : 'none' }};">
+                        {{ $cartItemCount }}
+                    </span>
+                </a>
                 <a href="" class="btn btn-success mr-2">Buyer</a>
                 <a href="" class="btn btn-dark">Seller</a>
             </div>
+            
 
         </div>
     </nav>

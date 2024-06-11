@@ -19,7 +19,7 @@ $buyers = $sellers = $users;
 
 @endphp
 
-<form action="{{ route('orders.store') }}" method="POST">
+<form action="{{ route('orders.store', ['rate_id' => $rate_id]) }}" method="POST">
     @csrf
 
     <!-- Website selection -->
