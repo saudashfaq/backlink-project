@@ -1,0 +1,27 @@
+.payment-cancel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center;
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    padding: 1rem; /* Optional padding */
+}
+
+.payment-cancel .cancel-icon {
+    font-size: 3rem; /* Size of the cross icon */
+    color: #dc3545; /* Red color for the cancel icon */
+    margin-bottom: 1rem; /* Space between the icon and text */
+}
+
+.container-fluid-cancel {
+    max-width: 600px; /* Set a maximum width for larger screens */
+    width: 100%; /* Full width within the max-width */
+}
+
+h1,
+p {
+    margin: 0;
+    padding: 0.5rem 0; /* Add some space between elements */
+}
