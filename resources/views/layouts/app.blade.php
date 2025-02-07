@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/provide-details.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/add-to-cart.css') }}">
     {{-- <script src="{{asset('assets/css/javascript/main.js')}}"></script> --}}
-    
+
     <!-- Additional stylesheets or custom styles -->
 
     <!-- Optional: Font Awesome for icons -->
@@ -28,7 +28,10 @@
 </head>
 
 <body>
-    <?php $cartItemCount = Cart::instance('cart')->content()->count(); ?>
+    @php
+    use Gloudemans\Shoppingcart\Facades\Cart;
+    $cartItemCount = Cart::instance('cart')->content()->count();
+    @endphp
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top position-sticky">
         <!-- Navbar content -->
@@ -48,7 +51,7 @@
                 <a href="" class="btn btn-success mr-2">Buyer</a>
                 <a href="" class="btn btn-dark">Seller</a>
             </div>
-            
+
 
         </div>
     </nav>
@@ -144,28 +147,28 @@
                 <!-- Main content -->
                 <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
 
-    <div class="container mt-4">
-        @yield('content')
-    </div>
+                    <div class="container mt-4">
+                        @yield('content')
+                    </div>
 
-    <!-- Bootstrap JS and other scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <!-- Bootstrap JS and other scripts -->
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- Additional scripts -->
-    @yield('additional_scripts')
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                    <!-- Additional scripts -->
+                    @yield('additional_scripts')
 
-    <script>
-        // Script to toggle sidebar
-        $(document).ready(function() {
-            // Toggle sidebar on smaller screens
-            $('.navbar-toggler').click(function() {
-                $('#sidebar').toggleClass('show');
-            });
-        });
-    </script>
-    
+                    <script>
+                        // Script to toggle sidebar
+                        $(document).ready(function() {
+                            // Toggle sidebar on smaller screens
+                            $('.navbar-toggler').click(function() {
+                                $('#sidebar').toggleClass('show');
+                            });
+                        });
+                    </script>
+
 </body>
 
 </html>

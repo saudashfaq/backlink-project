@@ -25,7 +25,6 @@ class WebsiteController extends Controller
     {
         $userId = Auth::check() ? Auth::id() : null;
         $websites = $WebsiteListingRepository->getWebsites($userId);
-
         return view('websites.index', ['websites' => $websites]);
     }
 
@@ -186,7 +185,6 @@ class WebsiteController extends Controller
             // Delete the website
             $website->delete();
             Session::flash('success', 'Website deleted successfully');
-
         } catch (Exception $e) {
 
             Log::error("An error occurred deleting a website: " . $e->getMessage());
@@ -258,5 +256,4 @@ class WebsiteController extends Controller
 
         return view('websites.index', compact('websites'));
     }
-
 }
